@@ -7,21 +7,11 @@ disqus: "Running Sentry For Pennies"
 group: "archive"
 ---
 
-_Note: The application [Sentry](http://getsentry.com), described here, is not to be confused with my own script, [Sentry](http://github.com/citruspi/Sentry), which performs a different function._
-
-### Preface
-
-A few months ago, I discovered [Papertrail](http://papertrailapp.com) and for the first time, I looked forward to going over my server logs every day.
-
-I began to search for other centralized logging solutions. Two services which I found were [Splunk](#) and [Sentry](#). I've had Splunk running on my Linode server for the past few months, but never got around to Sentry. I finally got around to it on Wednesday. 
-
-The only turn off for Sentry was the pricing, so I decided to host it myself. This way, I pay pennies and I don't have any restrictions. Best of both worlds.
-
 ### Platform
 
 I'm currently running Sentry on a 32 bit Micro EC2 instance with Amazon Linux.
 
-#### Database
+### Database
 
 Sentry requires a database and can use any of the following
 
