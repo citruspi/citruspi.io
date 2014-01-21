@@ -137,10 +137,19 @@ When you see the _OS Verification is Off_ screen on boot up, press `Control + U`
 
 Login with 
 
-| username | password |
-|:-|:-|
-|root|toor|
-{: .table}
+<table>
+
+    <tr>
+        <td>username</td>
+        <td>password</td>
+    </tr>
+
+    <tr>
+        <td>root</td>
+        <td>toor</td>
+    </tr>
+
+</table>
 
 You can use `startx` to launch the GUI. 
 
