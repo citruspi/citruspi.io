@@ -2,7 +2,7 @@
 layout: post
 title:  "SimpleHTTPServer for  File Transfers"
 date:   2013-12-03
-categories: python, tips
+categories: [python, tips]
 group: "archive"
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Self-Hosting Sentry"
 date:   2013-03-13
-categories: code
+categories: [code]
 group: "archive"
 ---
 

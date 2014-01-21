@@ -2,7 +2,7 @@
 layout: post
 title:  "Keeping Secrets Secret"
 date:   2013-01-27
-categories: code
+categories: [code]
 group: "archive"
 ---
 

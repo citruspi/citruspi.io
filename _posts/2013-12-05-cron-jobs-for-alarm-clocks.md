@@ -2,7 +2,7 @@
 layout: post
 title:  "Cron Jobs for Alarm Clocks"
 date:   2013-12-05
-categories: linux, cron, life tips
+categories: [linux, cron, life tips]
 group: "archive"
 ---
 
