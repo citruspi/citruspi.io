@@ -91,6 +91,6 @@ wp-config.php
 
 then git will ignore `wp-config.php`, leaving you free to `git add .` blindly.
 
-![.gitignore, you fools](http://cdn.memegenerator.net/instances/400x/33945125.jpg)
+<a href="http://cdn.memegenerator.net/instances/400x/33945125.jpg"><img width="100%" src="http://cdn.memegenerator.net/instances/400x/33945125.jpg" /></a>
 
 Of course, all of this only matters if its a public repository, but it doesn\'t hurt to apply good security practices to private repositories as well.

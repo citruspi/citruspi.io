@@ -98,7 +98,7 @@ It should start up three workers:
 
 In your browser, open `ElasticIP:9000`. You should be greeted with a login prompt:
 
-<p><a href="http://i.imgur.com/bEsUAiu.png"><img alt="" class="img-responsive" src="http://i.imgur.com/bEsUAiu.png" /></a></p>
+<p><a href="http://i.imgur.com/bEsUAiu.png"><img alt="" width="100%" src="http://i.imgur.com/bEsUAiu.png" /></a></p>
 
 
 It works!

@@ -81,7 +81,7 @@ Then, we enable cross system booting:
 
     $ sudo crossystem dev_boot_usb=1
     
-<p><a href="http://i.imgur.com/fZPouot.png"><img alt="" class="img-responsive" src="http://i.imgur.com/fZPouot.png" /></a></p>
+<a href="http://i.imgur.com/fZPouot.png"><img alt="" width="100%" src="http://i.imgur.com/fZPouot.png" /></a>
     
 ### SD Card
 
@@ -144,8 +144,8 @@ Login with
 
 You can use `startx` to launch the GUI. 
 
-<p><a href="http://i.imgur.com/SX1aW1l.jpg"><img alt="" class="img-responsive" src="http://i.imgur.com/SX1aW1l.jpg" /></a></p>
-<p><a href="http://i.imgur.com/RTDDVws.jpg"><img alt="" class="img-responsive" src="http://i.imgur.com/RTDDVws.jpg" /></a></p>
+<a href="http://i.imgur.com/SX1aW1l.jpg"><img alt="" width="100%" src="http://i.imgur.com/SX1aW1l.jpg" /></a>
+<a href="http://i.imgur.com/RTDDVws.jpg"><img alt="" width="100%" src="http://i.imgur.com/RTDDVws.jpg" /></a>
 
 ### Bugs
 
