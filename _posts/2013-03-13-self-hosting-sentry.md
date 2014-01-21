@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Running Sentry For Pennies"
+title:  "Self-Hosting Sentry"
 date:   2013-03-13
 categories: code
-disqus: "Running Sentry For Pennies"
+disqus: "Self-Hosting Sentry"
 group: "archive"
 ---
 
