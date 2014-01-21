@@ -13,7 +13,7 @@ When I heard, last week, that Kali Linux 1.0 (Backtrack 6) was out, I was excite
 
 The Kali site has an [article on installing it on the Chromebook](http://docs.kali.org/armel-armhf/install-kali-samsung-chromebook), but I couldn't get it to work. It
 
-- has quite a few errors[^1]
+- has quite a few errors <sup>1</sup>
 - is vague about what to do at certain points
 
 So, having managed to get it running on my Chromebook, I figured I would document the steps I took.
@@ -165,4 +165,4 @@ The steps for the SD Card installation have been [verified](/kali-on-chromebook/
 
 ---
 
-[^1]: One such error? The instructions on Kali.org reference `/dev/sdb`. However, `/dev/sdb` is the location of a flash drive plugged into an __Intel Chromebook__. The location of a flash drive on the __ARM Chromebook__ is `/dev/sda`.
+[1]: One such error? The instructions on Kali.org reference `/dev/sdb`. However, `/dev/sdb` is the location of a flash drive plugged into an __Intel Chromebook__. The location of a flash drive on the __ARM Chromebook__ is `/dev/sda`.
