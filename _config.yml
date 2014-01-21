@@ -15,7 +15,7 @@ author:
   name:           'citruspi'
   url:            http://citruspi.io
 
-paginate:         5
+paginate:         100
 
 # Custom vars
 version:          1.0.0
