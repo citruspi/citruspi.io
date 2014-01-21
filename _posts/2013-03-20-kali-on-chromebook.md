@@ -11,7 +11,7 @@ group: "archive"
 
 When I heard, last week, that Kali Linux 1.0 (Backtrack 6) was out, I was excited. When I got to the [download page]() and saw that there were build images for my Raspberry Pi and Samsung Chromebook, I was ecstatic.
 
-The Kali site has an [article on installing it on the Chromebook](http://docs.kali.org/armel-armhf/install-kali-samsung-chromebook), but I couldn\'t get it to work. It
+The Kali site has an [article on installing it on the Chromebook](http://docs.kali.org/armel-armhf/install-kali-samsung-chromebook), but I couldn't get it to work. It
 
 - has quite a few errors[^1]
 - is vague about what to do at certain points
@@ -85,7 +85,7 @@ Then, we enable cross system booting:
     
 ### SD Card
 
-_I have not tested these instructions yet - I\'ve only used my flash drive. However, in theory, they should work. I\'d be grateful if someone tested this and reported back._
+_I have not tested these instructions yet - I've only used my flash drive. However, in theory, they should work. I'd be grateful if someone tested this and reported back._
 
 {% highlight bash %}
 $ sudo cgpt repair /dev/mmcblk1
@@ -149,9 +149,9 @@ You can use `startx` to launch the GUI.
 
 ### Bugs
 
-There are a few\...
+There are a few...
 
-- Web browser doesn\'t work (\"Failed to execute default Web Browser\")
+- Web browser doesn't work ("Failed to execute default Web Browser")
 - Terminal Emulator windows disappear, leaving just the title bar (?)
 
 ### Notes

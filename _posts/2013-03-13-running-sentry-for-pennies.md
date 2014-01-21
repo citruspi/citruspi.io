@@ -13,13 +13,13 @@ _Note: The application [Sentry](http://getsentry.com), described here, is not to
 
 A few months ago, I discovered [Papertrail](http://papertrailapp.com) and for the first time, I looked forward to going over my server logs every day.
 
-I began to search for other centralized logging solutions. Two services which I found were [Splunk](#) and [Sentry](#). I\'ve had Splunk running on my Linode server for the past few months, but never got around to Sentry. I finally got around to it on Wednesday. 
+I began to search for other centralized logging solutions. Two services which I found were [Splunk](#) and [Sentry](#). I've had Splunk running on my Linode server for the past few months, but never got around to Sentry. I finally got around to it on Wednesday. 
 
-The only turn off for Sentry was the pricing, so I decided to host it myself. This way, I pay pennies and I don\'t have any restrictions. Best of both worlds.
+The only turn off for Sentry was the pricing, so I decided to host it myself. This way, I pay pennies and I don't have any restrictions. Best of both worlds.
 
 ### Platform
 
-I\'m currently running Sentry on a 32 bit Micro EC2 instance with Amazon Linux.
+I'm currently running Sentry on a 32 bit Micro EC2 instance with Amazon Linux.
 
 #### Database
 
@@ -31,11 +31,11 @@ Sentry requires a database and can use any of the following
 
 However, according to the Documentation, SQLite is _not fully supported_, so you should probably switch to Postgres or MySQL (Amazon RDS, anyone?) at some point.
 
-I opted to stick with SQLite for now because I just wanted to get it running. I\'ll most likely setup AWS RDS in the near future.
+I opted to stick with SQLite for now because I just wanted to get it running. I'll most likely setup AWS RDS in the near future.
 
 ### Installation
 
-I\'m going to assume that, by now, you have:
+I'm going to assume that, by now, you have:
 
 - launched an instance
 - downloaded the key pair
@@ -60,7 +60,7 @@ A config file named `sentry.conf.py` will be created in `~/ec2-user/.sentry/`:
 
 > Configuration file created at '/home/ec2-user/.sentry/sentry.conf.py'
 
-You don\'t have to modify any of the settings right now, but we will later.
+You don't have to modify any of the settings right now, but we will later.
 
 Now, run
 
@@ -75,7 +75,7 @@ If it prints out
 
 Enter `yes` and fill out the fields it provides. The user you create right now will be the _superuser_ for your Sentry installation.
 
-When it finishes setting up Sentry, you\'ll be ready to go to the next section.
+When it finishes setting up Sentry, you'll be ready to go to the next section.
 
 ### Is It Up?
 
@@ -109,11 +109,11 @@ Now, you can login, setup teams and projects, and get to work.
 
 #### Disable Sign Ups
 
-Right now, any one who stumbles upon your install can create an account. This isn\'t really a big problem because they\'ll be greeted with
+Right now, any one who stumbles upon your install can create an account. This isn't really a big problem because they'll be greeted with
 
 > You are not a member of any teams in Sentry and you do not have access to create a new team.
 
-However, it\'s still a nuisance.
+However, it's still a nuisance.
 
 To disable user registrations, just add
 
@@ -123,7 +123,7 @@ SENTRY_ALLOW_REGISTRATION = False
 
 to the `sentry.conf.py` file.
 
-You\'ll need to run
+You'll need to run
 
 {% highlight bash %}
 $ sentry upgrade
@@ -131,11 +131,11 @@ $ sentry upgrade
 
 again (no prompt this time) and kill and restart the Sentry process for the changes to take effect.
 
-If you read the docs, there\'s a ton of other [config options](http://sentry.readthedocs.org/en/latest/config/index.html).
+If you read the docs, there's a ton of other [config options](http://sentry.readthedocs.org/en/latest/config/index.html).
 
 #### Reverse Proxy
 
-I don\'t want to have to type in `http://174.129.196.120:9000/` every time, so I set up a reverse proxy with Nginx on my Linode VPS.
+I don't want to have to type in `http://174.129.196.120:9000/` every time, so I set up a reverse proxy with Nginx on my Linode VPS.
 
 {% highlight nginx %}
 server {
@@ -157,7 +157,7 @@ server {
 }
 {% endhighlight %}   
     
-#### It\'s A Service
+#### It's A Service
 
 You should probably manage Sentry processes some way. I decided to go with [Supervisor](http://supervisord.org/).
 
