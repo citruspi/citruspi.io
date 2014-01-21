@@ -9,3 +9,16 @@ layout: default
 
   <p>Questions, comments, or thoughts? I'm on <a>Twitter</a> and <a>App.net</a> as <a>@citruspi</a>.</p>
 </div>
+
+<div class="pagination">
+  {% if page.previous %}
+      <a class="pagination-item older" href="{{ page.previous.url }}">{{ page.previous.title }}</a>  
+  {% else %}
+    <span class="pagination-item older">No Older Posts</span>
+  {% endif %}
+  {% if page.next %}
+      <a class="pagination-item newer" href="{{ page.next.url }}">{{ page.next.title }}</a>
+  {% else %}
+    <span class="pagination-item newer">No Newer Posts</span>
+  {% endif %}
+</div>
