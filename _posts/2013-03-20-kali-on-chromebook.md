@@ -3,7 +3,6 @@ layout: post
 title:  "Kali Linux on the Chromebook"
 date:   2013-03-20
 categories: [chromebook, kali]
-disqus: "Kali Linux On The Chromebook"
 group: "archive"
 ---
 

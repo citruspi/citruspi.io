@@ -3,7 +3,6 @@ layout: post
 title:  "Keeping Secrets Secret"
 date:   2013-01-27
 categories: code
-disqus: "Keeping Secrets Secret"
 group: "archive"
 ---
 
