@@ -6,7 +6,7 @@ pygments:         true
 permalink:        /:title/
 
 # Setup
-title:            citruspi.io
+title:            citruspi
 tagline:          ''
 description:      ''
 url:              http://citruspi.io
