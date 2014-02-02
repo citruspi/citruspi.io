@@ -17,8 +17,5 @@ author:
 
 paginate:         100
 
-# Custom vars
-version:          1.0.0
-
 github:
   repo:           https://github.com/citruspi/citruspi.io
