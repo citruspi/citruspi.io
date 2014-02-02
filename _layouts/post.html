@@ -4,7 +4,12 @@ layout: default
 
 <div class="post" style="margin-bottom:0em;">
   <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+  <span class="post-date">
+      Published on {{ page.date | date_to_string }}
+      {% if page.edited %}
+      | Lasted edited on {{ page.edited | date: "%d %b %y" }}
+      {% endif %}
+  </span>
   {{ content }}
 
   <p>Questions, comments, or thoughts? I'm on <a>Twitter</a> and <a>App.net</a> as <a>@citruspi</a>.</p>
