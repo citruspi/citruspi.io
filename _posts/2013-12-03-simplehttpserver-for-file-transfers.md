@@ -3,7 +3,7 @@ layout: post
 title:  "SimpleHTTPServer for  File Transfers"
 date:   2013-12-03
 categories: [python, tips]
-group: "archive"
+type: "post"
 ---
 
 Another student walked up to me earlier today, asking for my help in getting some files off a thumb drive and onto an Ubuntu virtual machine running on Windows. 

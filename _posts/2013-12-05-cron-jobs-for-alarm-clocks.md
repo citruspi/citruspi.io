@@ -3,7 +3,7 @@ layout: post
 title:  "Cron Jobs for Alarm Clocks"
 date:   2013-12-05
 categories: [linux, cron, life tips]
-group: "archive"
+type: "post"
 ---
 
 I've been struggling to wake up on time for some time now. I could never wake up to alarm clocks - I tried iHomes, phones, etc. 

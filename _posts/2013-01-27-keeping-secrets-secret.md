@@ -3,7 +3,7 @@ layout: post
 title:  "Keeping Secrets Secret"
 date:   2013-01-27
 categories: [code]
-group: "archive"
+type: "post"
 ---
 
 Over the past week or so, a few posts on Hacker News have popped up which demonstrate how easy it is to to find files with sensitive information like:
