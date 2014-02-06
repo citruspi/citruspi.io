@@ -4,6 +4,7 @@ title:  "SimpleHTTPServer File Transfers"
 date:   2013-12-03
 categories: [python, tips]
 type: "post"
+alias: [/simplehttpserver-for-file-transfers/index.html]
 ---
 
 Another student walked up to me earlier today, asking for my help in getting some files off a thumb drive and onto an Ubuntu virtual machine running on Windows. 
