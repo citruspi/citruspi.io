@@ -1,5 +1,14 @@
+body {
+	border-top: thick solid #FFA500;
+}
+
+.page-title, .post-title, .post-title a {
+	color: #FFA500;	
+}
+
 a {
     text-decoration:none;
+    color: #FFA500;
 }
 
 a:hover, a:visited, a:link, a:active {
