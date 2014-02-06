@@ -4,6 +4,7 @@ title:  "Cron Job Alarm Clocks"
 date:   2013-12-05
 categories: [linux, cron, life tips]
 type: "post"
+alias: [/cron-jobs-for-alarm-clocks/index.html]
 ---
 
 I've been struggling to wake up on time for some time now. I could never wake up to alarm clocks - I tried iHomes, phones, etc. 
