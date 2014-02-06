@@ -7,6 +7,7 @@
 
     <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
          content to avoid any CSS collisions with our real content. -->
+
     <div class="wrap">
       <div class="masthead">
         <div class="container">
@@ -25,6 +26,9 @@
         {{ content }}
       </div>
 
+
+      {% if page.url != '/index.html' %}
+
       <div class="container content" style="margin-bottom:4em;">
 
           <hr>
@@ -33,6 +37,9 @@
           <span style="float:right"><a href="https://github.com/citruspi/citruspi.io">Open Source on GitHub</a></span>
 
       </div>
+
+      {% endif %}
+
     </div>
 
   </body>
