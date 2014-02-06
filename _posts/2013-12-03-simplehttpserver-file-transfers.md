@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SimpleHTTPServer for  File Transfers"
+title:  "SimpleHTTPServer File Transfers"
 date:   2013-12-03
 categories: [python, tips]
 type: "post"
