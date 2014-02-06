@@ -17,5 +17,7 @@ author:
 
 paginate:         100
 
+revision_base:    https://github.com/citruspi/citruspi.io/commits/master/
+
 github:
   repo:           https://github.com/citruspi/citruspi.io
