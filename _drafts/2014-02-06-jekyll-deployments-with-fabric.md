@@ -32,7 +32,15 @@ def push():
 
 {% endhighlight %}
 
-The script
+
+
+When you run
+
+{% highlight bash %}
+$ fab push
+{% endhighlight %}
+
+the script
 
 1. Builds the site
 2. Zips it as `_site.zip`
