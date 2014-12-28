@@ -1,5 +1,6 @@
 ---
 layout: post
+draft: true
 title:  "A Brief Guide to Pass"
 date:   2014-02-02
 categories: [passwords, linux]
@@ -50,7 +51,7 @@ Initialize your password store with
 
 ### Organization of the Password Store
 
-Passwords (and other sensitive material you choose to store with pass) are saved in separate files, one per entry. Files can be grouped in separate directories. All these files and directories are stored in your home directory, under `~.password-store/`. 
+Passwords (and other sensitive material you choose to store with pass) are saved in separate files, one per entry. Files can be grouped in separate directories. All these files and directories are stored in your home directory, under `~.password-store/`.
 
 Personally, I organize my "material" the way I did in 1Password - I have a folder for logins, a folder for servers, a folder for database accounts, etc. Files are titled with the account's username and the password is stored within the file. Accounts for similar services - the same website, the same server, etc - are grouped together.
 
@@ -140,7 +141,7 @@ To retrieve an existing password, you can use
 
     $ pass [show] <account-name>
 
-where `[show]` is optional. 
+where `[show]` is optional.
 
 Instead of having the password echo'd to the terminal, you can pass `--clip` or `-c` to have it copied to your clipboard. As with `generate`, the password will be stored in the clipboard for forty-five seconds.
 
