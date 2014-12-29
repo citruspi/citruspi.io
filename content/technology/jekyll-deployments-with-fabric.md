@@ -1,12 +1,10 @@
 ---
-layout: post
 title:  "Jekyll Deployments with Fabric"
 date:   2014-02-06
-categories: [blogging, code]
-type: "post"
+slug: "jekyll-deployments-with-fabric"
 ---
 
-I put together a quick [fabric][0] script yesterday to deploy this site after growing tired of manually building it and SFTP'ing it over. 
+I put together a quick [fabric][0] script yesterday to deploy this site after growing tired of manually building it and SFTP'ing it over.
 
 An alternative method which I've used in the past would be to setup a Git repo on the server and have a post-recieve hook which builds the site and copies it over, allowing me to deploy via Git push. However, I didn't want to install Ruby on the server if it would only be used for building Jekyll sites.
 

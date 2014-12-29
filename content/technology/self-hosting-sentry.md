@@ -1,9 +1,7 @@
 ---
-layout: post
 title:  "Self-Hosting Sentry"
 date:   2013-03-13
-categories: [code]
-type: "post"
+slug: "self-hosting-sentry"
 ---
 
 ### Platform
@@ -34,7 +32,7 @@ I'm going to assume that, by now, you have:
 $ ssh -i ~/.ssh/public.pem ec2-user@ElasticIP
 $ sudo yum install gcc python-devel
 $ sudo easy_install -U sentry
-{% endhighlight %}   
+{% endhighlight %}
 
 
 ### Setup
@@ -43,8 +41,8 @@ After the installation has finished, run
 
 {% highlight bash %}
 $ sentry init
-{% endhighlight %}   
-    
+{% endhighlight %}
+
 A config file named `sentry.conf.py` will be created in `~/ec2-user/.sentry/`:
 
 > Configuration file created at '/home/ec2-user/.sentry/sentry.conf.py'
@@ -55,12 +53,12 @@ Now, run
 
 {% highlight bash %}
 $ sentry upgrade
-{% endhighlight %}   
-    
+{% endhighlight %}
+
 If it prints out
 
     You just installed Django's auth system, which means you don't have any superusers defined.
-    Would you like to create one now? (yes/no): 
+    Would you like to create one now? (yes/no):
 
 Enter `yes` and fill out the fields it provides. The user you create right now will be the _superuser_ for your Sentry installation.
 
@@ -72,8 +70,8 @@ In your console, run
 
 {% highlight bash %}
 $ sentry start
-{% endhighlight %}   
-    
+{% endhighlight %}
+
 It should start up three workers:
 
 {% highlight bash %}
@@ -83,7 +81,7 @@ It should start up three workers:
 2013-03-14 02:38:26 [1449] [INFO] Booting worker with pid: 1449
 2013-03-14 02:38:26 [1450] [INFO] Booting worker with pid: 1450
 2013-03-14 02:38:26 [1451] [INFO] Booting worker with pid: 1451
-{% endhighlight %}   
+{% endhighlight %}
 
 In your browser, open `ElasticIP:9000`. You should be greeted with a login prompt:
 
@@ -108,7 +106,7 @@ To disable user registrations, just add
 
 {% highlight python %}
 SENTRY_ALLOW_REGISTRATION = False
-{% endhighlight %}   
+{% endhighlight %}
 
 to the `sentry.conf.py` file.
 
@@ -116,7 +114,7 @@ You'll need to run
 
 {% highlight bash %}
 $ sentry upgrade
-{% endhighlight %}   
+{% endhighlight %}
 
 again (no prompt this time) and kill and restart the Sentry process for the changes to take effect.
 
@@ -131,21 +129,21 @@ server {
     server_name sentry.domain.com;
     access_log /you_pick/logs/access.log;
     error_log /you_pick/logs/error.log;
-    
+
     keepalive_timeout 5;
-    
+
     location / {
         proxy_pass         http://ElasticIP:9000;
         proxy_redirect     off;
-        
+
         proxy_set_header   Host              $host;
         proxy_set_header   X-Real-IP         $remote_addr;
         proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
         proxy_set_header   X-Forwarded-Proto $scheme;
     }
 }
-{% endhighlight %}   
-    
+{% endhighlight %}
+
 #### It's A Service
 
 You should probably manage Sentry processes some way. I decided to go with [Supervisor](http://supervisord.org/).
@@ -154,29 +152,29 @@ If you do too, install Supervisor:
 
 {% highlight bash %}
 $ sudo easy_install supervisor
-{% endhighlight %}   
+{% endhighlight %}
 
 Create and edit the `.conf` file:
 
 {% highlight bash %}
 $ sudo vim /etc/supervisord.conf
-{% endhighlight %}   
-    
+{% endhighlight %}
+
 and add
 
 {% highlight bash %}
-[program:sentry-web]    
+[program:sentry-web]
 command=/usr/bin/sentry start http
 autostart=true
 autorestart=true
 redirect_stderr=true  
-{% endhighlight %}   
-    
+{% endhighlight %}
+
 to it. Then, run it with
 
 {% highlight bash %}
 $ supervisord -c /etc/supervisord.conf
-{% endhighlight %}   
+{% endhighlight %}
 
 #### Plugins
 

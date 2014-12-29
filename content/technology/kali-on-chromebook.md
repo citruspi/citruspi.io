@@ -1,9 +1,7 @@
 ---
-layout: post
 title:  "Kali Linux on the Chromebook"
 date:   2013-03-20
-categories: [chromebook, kali]
-type: "post"
+slug: "kali-on-chromebook"
 ---
 
 ### Preface
@@ -48,14 +46,14 @@ Depending on what you use, there are a different set of instructions below.
 
     $ sudo cgpt repair /dev/sda
 
-    # Now, we set the priority of the boot partitions.    
+    # Now, we set the priority of the boot partitions.
     $ sudo cgpt add -i 1 -T 5 -P 5 -l KERN-A /dev/sda
     $ sudo cgpt add -i 2 -T 5 -P 10 -l KERN-B /dev/sda
-    
-Now, if you run 
+
+Now, if you run
 
     $ sudo cgpt show /dev/sda
-    
+
 it should look similar to this:
 
         start        size    part   contents
@@ -79,9 +77,9 @@ it should look similar to this:
 Then, we enable cross system booting:
 
     $ sudo crossystem dev_boot_usb=1
-    
+
 <a href="http://i.imgur.com/fZPouot.png"><img alt="" width="100%" src="http://i.imgur.com/fZPouot.png" /></a>
-    
+
 ### SD Card
 
 _I have not tested these instructions yet - I've only used my flash drive. However, in theory, they should work. I'd be grateful if someone tested this and reported back._
@@ -89,13 +87,13 @@ _I have not tested these instructions yet - I've only used my flash drive. Howev
 {% highlight bash %}
 $ sudo cgpt repair /dev/mmcblk1
 
-# Now, we set the priority of the boot partitions.    
+# Now, we set the priority of the boot partitions.
 $ sudo cgpt add -i 1 -T 5 -P 10 -l KERN-A /dev/mmcblk1
 $ sudo cgpt add -i 2 -T 5 -P 5 -l KERN-B /dev/mmcblk1
 {% endhighlight %}
 
 
-Now, if you run 
+Now, if you run
 
     $ sudo cgpt show /dev/mmcblk1
 
@@ -126,15 +124,15 @@ Then, we enable cross system booting:
 
 
 {% highlight bash %}
-$ sudo crossystem dev_boot_usb=1    
+$ sudo crossystem dev_boot_usb=1
 {% endhighlight %}
-    
+
 
 ### Wrap Up
 
 When you see the _OS Verification is Off_ screen on boot up, press `Control + U` to boot into Kali Linux or `Control + D` to boot into Chrome OS (but you already knew that, right?).
 
-Login with 
+Login with
 
 <table>
 
@@ -150,7 +148,7 @@ Login with
 
 </table>
 
-You can use `startx` to launch the GUI. 
+You can use `startx` to launch the GUI.
 
 <a href="http://i.imgur.com/SX1aW1l.jpg"><img alt="" width="100%" src="http://i.imgur.com/SX1aW1l.jpg" /></a>
 <a href="http://i.imgur.com/RTDDVws.jpg"><img alt="" width="100%" src="http://i.imgur.com/RTDDVws.jpg" /></a>

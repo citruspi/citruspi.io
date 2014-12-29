@@ -1,13 +1,12 @@
 ---
-layout: post
 title:  "SimpleHTTPServer File Transfers"
 date:   2013-12-03
-categories: [python, tips]
-type: "post"
-alias: [/simplehttpserver-for-file-transfers/index.html]
+aliases:
+    - /simplehttpserver-for-file-transfers/
+slug: "simplehttpserver-file-transfers"
 ---
 
-Another student walked up to me earlier today, asking for my help in getting some files off a thumb drive and onto an Ubuntu virtual machine running on Windows. 
+Another student walked up to me earlier today, asking for my help in getting some files off a thumb drive and onto an Ubuntu virtual machine running on Windows.
 
 We tried to
 
@@ -21,8 +20,8 @@ My solution?
 I plugged his drive into my Macbook, `cd`'ed to `/Volumes/UNTITLED` and ran
 
     $ python -m SimpleHTTPServer
-    
-I then opened `myip:8000` on his computer and downloaded the files via his web browser. 
+
+I then opened `myip:8000` on his computer and downloaded the files via his web browser.
 
 I've never really taken the time to think about it, but when I'm on a network where I get
 

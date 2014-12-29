@@ -1,9 +1,7 @@
 ---
-layout: post
 title:  "Keeping Secrets Secret"
 date:   2013-01-27
-categories: [code]
-type: "post"
+slug: "keeping-secrets-secret"
 ---
 
 Over the past week or so, a few posts on Hacker News have popped up which demonstrate how easy it is to to find files with sensitive information like:
@@ -20,7 +18,7 @@ If you make use of Google dorks and run a search for
 
 you'll get back 2,000+ results. That's a problem.
 
-A search for 
+A search for
 
 > site:github.com master/id_rsa
 
@@ -32,9 +30,9 @@ In response, Github has written a post, [Secrets in the code](https://github.com
 
 > Once a secret is out, it's out. There are no partially compromised secrets. If you've pushed sensitive information to a public repository, there's a good chance that it's been indexed by Google and can be searched. And with GitHub's new Search feature, it's now more easily searchable on our site.
 
-They're right - once the cat's out the bag, its out. Of course, Github has a great article on [removing sensitive data from a repository's history](https://help.github.com/articles/remove-sensitive-data). 
+They're right - once the cat's out the bag, its out. Of course, Github has a great article on [removing sensitive data from a repository's history](https://help.github.com/articles/remove-sensitive-data).
 
-Unfortunately, the fact is that at some point, the page has been (most likely) cached and visited. 
+Unfortunately, the fact is that at some point, the page has been (most likely) cached and visited.
 
 __You should consider the sensitive information compromised for all intents and purposes.__
 
@@ -84,7 +82,7 @@ So, if your `.gitignore` file looks like
 
 {% highlight bash %}
 # .gitignore for wordpress
-    
+
 wp-config.php
 {% endhighlight %}
 
