@@ -28,20 +28,20 @@ I'm going to assume that, by now, you have:
 - downloaded the key pair
 - associated an elastic ip with the instance
 
-{% highlight bash %}
+```bash
 $ ssh -i ~/.ssh/public.pem ec2-user@ElasticIP
 $ sudo yum install gcc python-devel
 $ sudo easy_install -U sentry
-{% endhighlight %}
+```
 
 
 ### Setup
 
 After the installation has finished, run
 
-{% highlight bash %}
+```bash
 $ sentry init
-{% endhighlight %}
+```
 
 A config file named `sentry.conf.py` will be created in `~/ec2-user/.sentry/`:
 
@@ -51,9 +51,9 @@ You don't have to modify any of the settings right now, but we will later.
 
 Now, run
 
-{% highlight bash %}
+```bash
 $ sentry upgrade
-{% endhighlight %}
+```
 
 If it prints out
 
@@ -68,20 +68,20 @@ When it finishes setting up Sentry, you'll be ready to go to the next section.
 
 In your console, run
 
-{% highlight bash %}
+```bash
 $ sentry start
-{% endhighlight %}
+```
 
 It should start up three workers:
 
-{% highlight bash %}
+```bash
 2013-03-14 02:38:26 [1440] [INFO] Starting unicorn 0.17.2
 2013-03-14 02:38:26 [1440] [INFO] Listening at: http://0.0.0.0:9000 (1440)
 2013-03-14 02:38:26 [1440] [INFO] Using worker: sync
 2013-03-14 02:38:26 [1449] [INFO] Booting worker with pid: 1449
 2013-03-14 02:38:26 [1450] [INFO] Booting worker with pid: 1450
 2013-03-14 02:38:26 [1451] [INFO] Booting worker with pid: 1451
-{% endhighlight %}
+```
 
 In your browser, open `ElasticIP:9000`. You should be greeted with a login prompt:
 
@@ -104,17 +104,17 @@ However, it's still a nuisance.
 
 To disable user registrations, just add
 
-{% highlight python %}
+```python
 SENTRY_ALLOW_REGISTRATION = False
-{% endhighlight %}
+```
 
 to the `sentry.conf.py` file.
 
 You'll need to run
 
-{% highlight bash %}
+```bash
 $ sentry upgrade
-{% endhighlight %}
+```
 
 again (no prompt this time) and kill and restart the Sentry process for the changes to take effect.
 
@@ -124,7 +124,7 @@ If you read the docs, there's a ton of other [config options](http://sentry.read
 
 I don't want to have to type in `http://174.129.196.120:9000/` every time, so I set up a reverse proxy with Nginx on my Linode VPS.
 
-{% highlight nginx %}
+```nginx
 server {
     server_name sentry.domain.com;
     access_log /you_pick/logs/access.log;
@@ -142,7 +142,7 @@ server {
         proxy_set_header   X-Forwarded-Proto $scheme;
     }
 }
-{% endhighlight %}
+```
 
 #### It's A Service
 
@@ -150,31 +150,31 @@ You should probably manage Sentry processes some way. I decided to go with [Supe
 
 If you do too, install Supervisor:
 
-{% highlight bash %}
+```bash
 $ sudo easy_install supervisor
-{% endhighlight %}
+```
 
 Create and edit the `.conf` file:
 
-{% highlight bash %}
+```bash
 $ sudo vim /etc/supervisord.conf
-{% endhighlight %}
+```
 
 and add
 
-{% highlight bash %}
+```ini
 [program:sentry-web]
 command=/usr/bin/sentry start http
 autostart=true
 autorestart=true
 redirect_stderr=true  
-{% endhighlight %}
+```
 
 to it. Then, run it with
 
-{% highlight bash %}
+```bash
 $ supervisord -c /etc/supervisord.conf
-{% endhighlight %}
+```
 
 #### Plugins
 
