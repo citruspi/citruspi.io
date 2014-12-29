@@ -85,7 +85,9 @@ Then, we enable cross system booting:
 
 ### SD Card
 
-_I have not tested these instructions yet - I've only used my flash drive. However, in theory, they should work. I'd be grateful if someone tested this and reported back._
+<strike>_I have not tested these instructions yet - I've only used my flash drive. However, in theory, they should work. I'd be grateful if someone tested this and reported back._</strike>
+
+(The instructions for the SD Card were verified by a reader on 13 June 2013).
 
 ```bash
 $ sudo cgpt repair /dev/mmcblk1
@@ -167,10 +169,6 @@ There are a few...
 
 - If you swipe horizontally with two fingers, you can scroll through the different workspaces.
 - Trackpad performance appears to be better than that of ChrUbuntu.
-
-### Edit (June 13, 2013)
-
-The steps for the SD Card installation have been [verified](/kali-on-chromebook/#comment-928592964).
 
 ---
 
