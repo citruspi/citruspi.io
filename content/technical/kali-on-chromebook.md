@@ -84,14 +84,16 @@ Then, we enable cross system booting:
 
 _I have not tested these instructions yet - I've only used my flash drive. However, in theory, they should work. I'd be grateful if someone tested this and reported back._
 
-{% highlight bash %}
+```bash
 $ sudo cgpt repair /dev/mmcblk1
+```
 
-# Now, we set the priority of the boot partitions.
+Now, we set the priority of the boot partitions.
+
+```bash
 $ sudo cgpt add -i 1 -T 5 -P 10 -l KERN-A /dev/mmcblk1
 $ sudo cgpt add -i 2 -T 5 -P 5 -l KERN-B /dev/mmcblk1
-{% endhighlight %}
-
+```
 
 Now, if you run
 
@@ -99,7 +101,7 @@ Now, if you run
 
 it should look similar to this:
 
-{% highlight bash %}
+```bash
     start        size    part   contents
         0           1           PMBR
         1           1           Pri GPT header
@@ -117,16 +119,14 @@ it should look similar to this:
                                      UUID: E9E67EE1-C02E-481C-BA3F-18E721515DBB
 125045391          32           Sec GPT table
 125045423           1           Sec GPT header
-{% endhighlight %}
+```
 
 
 Then, we enable cross system booting:
 
-
-{% highlight bash %}
+```bash
 $ sudo crossystem dev_boot_usb=1
-{% endhighlight %}
-
+```
 
 ### Wrap Up
 
