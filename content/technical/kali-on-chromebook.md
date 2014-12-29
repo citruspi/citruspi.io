@@ -2,6 +2,9 @@
 title:  "Kali Linux on the Chromebook"
 date:   2013-03-20
 slug: "kali-on-chromebook"
+tags:
+    - kali
+    - chromebook
 ---
 
 ### Preface

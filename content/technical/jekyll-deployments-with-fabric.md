@@ -2,6 +2,9 @@
 title:  "Jekyll Deployments with Fabric"
 date:   2014-02-06
 slug: "jekyll-deployments-with-fabric"
+tags:
+    - jekyll
+    - fabric
 ---
 
 I put together a quick [fabric][0] script yesterday to deploy this site after growing tired of manually building it and SFTP'ing it over.

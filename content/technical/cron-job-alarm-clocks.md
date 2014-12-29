@@ -1,9 +1,13 @@
 ---
 title:  "Cron Job Alarm Clocks"
 date:   2013-12-05
+section: "technical"
 aliases:
     - /cron-jobs-for-alarm-clocks/
 slug: "cron-job-alarm-clocks"
+tags:
+    - lifehack
+    - cron
 ---
 
 I've been struggling to wake up on time for some time now. I could never wake up to alarm clocks - I tried iHomes, phones, etc.

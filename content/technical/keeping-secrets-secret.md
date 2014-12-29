@@ -2,6 +2,8 @@
 title:  "Keeping Secrets Secret"
 date:   2013-01-27
 slug: "keeping-secrets-secret"
+tags:
+    - git    
 ---
 
 Over the past week or so, a few posts on Hacker News have popped up which demonstrate how easy it is to to find files with sensitive information like:
