@@ -8,7 +8,7 @@ I put together a quick [fabric][0] script yesterday to deploy this site after gr
 
 An alternative method which I've used in the past would be to setup a Git repo on the server and have a post-recieve hook which builds the site and copies it over, allowing me to deploy via Git push. However, I didn't want to install Ruby on the server if it would only be used for building Jekyll sites.
 
-{% highlight python linenos %}
+```python
 from fabric.api import *
 
 env.user = 'user'
@@ -27,16 +27,15 @@ def push():
     run('unzip /srv/%s/_site.zip -d /srv/%s' % (domain, domain))
     run('rm -rf /srv/%s/%s' % (domain, subdom))
     run('mv /srv/%s/_site /srv/%s/%s' % (domain, domain, subdom))
-
-{% endhighlight %}
+```
 
 
 
 When you run
 
-{% highlight bash %}
+```bash
 $ fab push
-{% endhighlight %}
+```
 
 the script
 
@@ -50,9 +49,9 @@ the script
 
 At this point, deploying takes less than a second for me
 
-{% highlight bash %}
+```bash
 $ fab push  0.88s user 0.17s system 18% cpu 5.664 total
-{% endhighlight %}
+```
 
 but that number is subject to the amount of content, connection speed, etc.
 
