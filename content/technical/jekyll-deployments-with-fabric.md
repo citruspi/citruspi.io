@@ -50,14 +50,6 @@ the script
 6. Unzips `_site.zip` to `_site/`
 7. Removes the previous site `www/` and replaces it with `_site/`
 
-At this point, deploying takes less than a second for me
-
-```bash
-$ fab push  0.88s user 0.17s system 18% cpu 5.664 total
-```
-
-but that number is subject to the amount of content, connection speed, etc.
-
 As far as I'm concerned, this is just a temporary measure - I plan to replace this with [Ansible][1] or [Salt Stack][2] when I get some time, but deploying via fabric till then is pretty nice. I also plan to slowly move my other static sites to Jekyll, allowing me to use my deployment script(s) with as many of my static sites as possible.
 
 [0]: http://fabfile.org
