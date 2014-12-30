@@ -1,9 +1,9 @@
 ---
 title:  "Self-Hosting Sentry"
 date:   2013-03-13
-slug: "self-hosting-sentry"
+url: "self-hosting-sentry"
 tags:
-    - sentry    
+    - sentry
 ---
 
 ### Platform

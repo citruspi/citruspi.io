@@ -2,7 +2,7 @@
 draft: true
 title:  "A Brief Guide to Pass"
 date:   2014-02-02
-slug: "a-brief-guide-to-pass"
+url: "a-brief-guide-to-pass"
 ---
 
 Until recently, I've been using [1Password][0] as my password manager. In December, when I started using a Linux desktop, I began a search for a new password manager - one that didn't require Wine to run on Linux.

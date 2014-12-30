@@ -3,7 +3,7 @@ title:  "SimpleHTTPServer File Transfers"
 date:   2013-12-03
 aliases:
     - /simplehttpserver-for-file-transfers/
-slug: "simplehttpserver-file-transfers"
+url: "simplehttpserver-file-transfers"
 tags:
     - python
     - lifehack

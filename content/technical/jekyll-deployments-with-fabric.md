@@ -1,7 +1,7 @@
 ---
 title:  "Jekyll Deployments with Fabric"
 date:   2014-02-06
-slug: "jekyll-deployments-with-fabric"
+url: "jekyll-deployments-with-fabric"
 tags:
     - jekyll
     - fabric

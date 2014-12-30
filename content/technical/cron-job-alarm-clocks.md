@@ -4,7 +4,7 @@ date:   2013-12-05
 section: "technical"
 aliases:
     - /cron-jobs-for-alarm-clocks/
-slug: "cron-job-alarm-clocks"
+url: "cron-job-alarm-clocks"
 tags:
     - lifehack
     - cron
