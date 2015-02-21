@@ -44,7 +44,9 @@ There's a few ways to prevent sensitive information from becoming public.
 
 Some of the `wp-config.php` files look like this:
 
-```PHP
+{{< highlight "php" >}}
+$hello = "hete";
+
 // ** MySQL settings - You can get this info from your web host ** //
 
 /** The name of the database for WordPress */
@@ -64,7 +66,8 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-```
+{{< /highlight >}}
+
 This solution makes use of PHP's [$_ENV](http://php.net/manual/en/reserved.variables.environment.php) variables. The sensitive information isn't actually in the code, so if the `wp-config.php` file gets committed accidentally, no biggie.
 
 Other languages also make use of environment variables - Python has `os.environ`.
