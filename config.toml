@@ -1,3 +1,4 @@
 baseurl = "https://citruspi.io"
 languageCode = "en-us"
 title = "citruspi"
+pygmentsstyle = "solarized"
