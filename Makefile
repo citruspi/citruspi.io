@@ -21,7 +21,8 @@ theme:
 	
 	git clone https://github.com/gthank/solarized-dark-pygments.git
 	python sites.py
-	#sudo mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
+	rm -rf solarized-dark-pygments
+	
 
 dist: clean
 

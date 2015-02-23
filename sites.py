@@ -1,5 +1,8 @@
 import site
+from shutil import copyfile
 
-targets = site.getsitepackages()
+for target in site.getsitepackages():
 
-print targets
+    if os.path.exists(target+'/pygments/styles'):
+
+        copyfile('solarized-dark-pygments/solarized.py', target+'/pygments/styles')
