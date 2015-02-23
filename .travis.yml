@@ -11,6 +11,7 @@ deploy:
   secret_access_key:
     secure: QEbXthgBIGTZS40Xeg7Zv4/YOfD6Klnuaf8OYwMvS54zKabdvTZm/nR4hbJwrkWNOsY1Vm3uKAzCt+sS4j4Z8eBzTBJ9lBMFKeudgik9SBbNobElRSU6UkLqjC0W+d7CsPVmV8/9WG4TsdbXo3EI2V41Z4L2USG6MOdu7rbgOcA=
   bucket: io.citruspi.www
+  skip_cleanup: true
   local-dir: release
   acl: public_read
   on:
