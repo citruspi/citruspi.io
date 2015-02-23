@@ -1,0 +1,17 @@
+language: go
+go:
+- 1.3
+install:
+- go get -v github.com/spf13/hugo
+script: return 0
+before_deploy: make theme && make release
+deploy:
+  provider: s3
+  access_key_id: AKIAIKAOQMWIKVZMP4BQ
+  secret_access_key:
+    secure: QEbXthgBIGTZS40Xeg7Zv4/YOfD6Klnuaf8OYwMvS54zKabdvTZm/nR4hbJwrkWNOsY1Vm3uKAzCt+sS4j4Z8eBzTBJ9lBMFKeudgik9SBbNobElRSU6UkLqjC0W+d7CsPVmV8/9WG4TsdbXo3EI2V41Z4L2USG6MOdu7rbgOcA=
+  bucket: io.citruspi.www
+  local-dir: release
+  acl: public_read
+  on:
+    repo: citruspi/citruspi.io
