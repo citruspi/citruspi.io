@@ -20,8 +20,8 @@ theme:
 
 	pip install pygments
 	
-	wget https://raw.githubusercontent.com/gthank/solarized-dark-pygments/master/solarized.py
-	mv solarized.py $(VIRTUALENVPATH)/pygments/styles/.
+	git clone git@github.com:gthank/solarized-dark-pygments.git
+	mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
 
 dist: clean
 
