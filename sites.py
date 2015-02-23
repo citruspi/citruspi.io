@@ -1,5 +1,6 @@
 import site
 from shutil import copyfile
+import os
 
 for target in site.getsitepackages():
 
