@@ -16,11 +16,11 @@ clean:
 theme:
 
 	mkdir themes
-	cd themes && git clone git@github.com:citruspi/Orchard.git
+	cd themes && git clone https://github.com/citruspi/Orchard.git
 
 	pip install pygments
 	
-	git clone git@github.com:gthank/solarized-dark-pygments.git
+	git clone https://github.com/gthank/solarized-dark-pygments.git
 	mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
 
 dist: clean
