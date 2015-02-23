@@ -1,6 +1,5 @@
 COMMIT:=$(shell git log -1 --pretty=format:'%H')
 BRANCH:=$(TRAVIS_BRANCH)
-VIRTUALENVPATH:=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
 ifeq ($(strip $(BRANCH)),)
 	BRANCH:=$(shell git branch | sed -n -e 's/^\* \(.*\)/\1/p')
@@ -21,8 +20,8 @@ theme:
 	sudo pip install pygments
 	
 	git clone https://github.com/gthank/solarized-dark-pygments.git
-	echo $(VIRTUALENVPATH)
-	sudo mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
+	python sites.py
+	#sudo mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
 
 dist: clean
 
