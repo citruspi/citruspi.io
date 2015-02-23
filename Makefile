@@ -18,10 +18,10 @@ theme:
 	mkdir themes
 	cd themes && git clone https://github.com/citruspi/Orchard.git
 
-	pip install pygments
+	sudo pip install pygments
 	
 	git clone https://github.com/gthank/solarized-dark-pygments.git
-	mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
+	sudo mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
 
 dist: clean
 
