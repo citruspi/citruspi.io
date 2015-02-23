@@ -20,7 +20,7 @@ theme:
 	sudo pip install pygments
 	
 	git clone https://github.com/gthank/solarized-dark-pygments.git
-	python sites.py
+	sudo python sites.py
 	rm -rf solarized-dark-pygments
 	
 
