@@ -21,6 +21,7 @@ theme:
 	sudo pip install pygments
 	
 	git clone https://github.com/gthank/solarized-dark-pygments.git
+	echo $(VIRTUALENVPATH)
 	sudo mv solarized-dark-pygments/solarized.py $(VIRTUALENVPATH)/pygments/styles/.
 
 dist: clean
