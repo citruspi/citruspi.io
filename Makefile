@@ -12,10 +12,7 @@ clean:
 	rm -rf dist
 	rm -rf release
 
-theme:
-
-	mkdir themes
-	cd themes && git clone https://github.com/citruspi/Orchard.git
+pygments:
 
 	sudo pip install pygments
 	
@@ -38,4 +35,4 @@ release: dist
 
 	rm dist.zip
 
-.PHONY: clean theme
+.PHONY: clean pygments

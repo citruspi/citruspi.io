@@ -1,0 +1,3 @@
+[submodule "themes/Orchard"]
+	path = themes/Orchard
+	url = https://github.com/citruspi/Orchard.git

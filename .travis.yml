@@ -4,7 +4,7 @@ go:
 install:
 - go get -v github.com/spf13/hugo
 script: return 0
-before_deploy: make theme && make release
+before_deploy: make pygments && make release
 deploy:
   provider: s3
   access_key_id: AKIAIKAOQMWIKVZMP4BQ
