@@ -9,7 +9,7 @@ tags:
 
 ### Preface
 
-When I heard, last week, that Kali Linux 1.0 (Backtrack 6) was out, I was excited. When I got to the [download page]() and saw that there were build images for my Raspberry Pi and Samsung Chromebook, I was ecstatic.
+When I heard, last week, that Kali Linux 1.0 (Backtrack 6) was out, I was excited. When I got to the [download page](https://www.kali.org/downloads/) and saw that there were build images for my Raspberry Pi and Samsung Chromebook, I was ecstatic.
 
 The Kali site has an [article on installing it on the Chromebook](http://docs.kali.org/armel-armhf/install-kali-samsung-chromebook), but I couldn't get it to work. It
 
