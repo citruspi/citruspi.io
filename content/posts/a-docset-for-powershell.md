@@ -146,7 +146,7 @@ remove. With that list in hand, I looped over each of the documentation pages
 and used Beautiful Soup to find and remove those elements.
 
 {{< highlight "python" >}}
-source = open(self.full_path, 'r+')
+source = open(path, 'r+')
 
 soup = BeautifulSoup(source.read())
 
@@ -200,7 +200,7 @@ replaced them.
 for link in soup.find_all('a'):
     for entry in entries:
         try:
-            if link.attrs['href'] == entry.url:
+            if link.attrs['href'] == entry.link:
                 link.attrs['href'] = entry.path
         except KeyError:
             pass
