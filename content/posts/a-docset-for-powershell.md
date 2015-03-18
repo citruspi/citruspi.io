@@ -33,7 +33,9 @@ documented the [PowerShell cmdlets][1].
 Later that evening, or rather a couple hours into the next morning, I had a
 working script which produced a docset which did just that.
 
-<video width="100%" src="/media/posts/a-docset-for-powershell/demo.webm" autoplay loop>
+<video width="100%" autoplay loop>
+    <source src="/media/posts/a-docset-for-powershell/demo.mp4" type="video/mp4">
+    <source src="/media/posts/a-docset-for-powershell/demo.webm" type="video/webm">
 </video>
 
 <br>
