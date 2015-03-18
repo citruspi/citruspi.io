@@ -75,7 +75,7 @@ For each of these reference pages I stored the page's name and link.
 # Indexing Reference Pages
 
 Once I had the reference pages, I started working on the code to get all the
-individual cmdlets. Instead of doing the logical thing and scraping the table
+individual cmdlets. Instead of taking the logical route and scraping the table
 provided, I used Beautiful Soup to scrape the table of contents on the left side
 to find all the elements with `data-toclevel=2` which indicated that it was a
 link to a page documenting a cmdlet.
