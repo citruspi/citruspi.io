@@ -304,6 +304,7 @@ update the feed.
 
 - Improve speed
 - Automatic weekly updates
+- Automatically parse cmdlet reference pages
 - Document more than just cmdlets
 - Build an index listing each cmdlet with it's description
 
