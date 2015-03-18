@@ -81,6 +81,8 @@ to find all the elements with `data-toclevel=2` which indicated that it was a
 link to a page documenting a cmdlet.
 
 {{< highlight "python" >}}
+entries = []
+
 for index in indexes:
 
     r = requests.get(index['url'])
@@ -94,8 +96,11 @@ for index in indexes:
             try:
                 if div['data-toclevel'] == '2':
 
-                    link = div.a.attrs['href'].strip()
-                    title = div.a.attrs['title']
+                    entries.append({
+                        'link': div.a.attrs['href'].strip(),
+                        'title': div.a.attrs['title'],
+                        'path': div.a.attrs['title']+'.html'
+                    })
 
             except KeyError:
                 pass
@@ -113,18 +118,20 @@ Arguably the easiest part, once I had the list of all the cmdlet documentation
 pages, I proceeded to loop over the list and download each page.
 
 {{< highlight "python" >}}
-r = requests.get(url)
+for entry in entries:
 
-if r.status_code == 200:
+    r = requests.get(entry['link'])
 
-    with open(path, 'w') as f:
-        f.write(r.content)
+    if r.status_code == 200:
 
-else:
+        with open(entry['path'], 'w') as f:
+            f.write(r.content)
 
-    raise Exception('Received "{code}" when downloading "{title}"'.format(
+    else:
+
+        print 'Failed to download "{title}" ({code})'.format(
                                                 code = r.status_code,
-                                                title = title))
+                                                title = title)
 {{< /highlight >}}
 
 # Rewriting the Documentation
@@ -146,41 +153,43 @@ remove. With that list in hand, I looped over each of the documentation pages
 and used Beautiful Soup to find and remove those elements.
 
 {{< highlight "python" >}}
-source = open(path, 'r+')
+for entry in entries:
 
-soup = BeautifulSoup(source.read())
+    source = open(entry['path'], 'r+')
 
-unnecessary = [
-    '#megabladeContainer',
-    '#ux-header',
-    '#isd_print',
-    '#isd_printABook',
-    '#expandCollapseAll',
-    '#leftNav',
-    '.feedbackContainer',
-    '#isd_printABook',
-    '.communityContentContainer',
-    '#ux-footer'
-]
+    soup = BeautifulSoup(source.read())
 
-for u in unnecessary:
+    unnecessary = [
+        '#megabladeContainer',
+        '#ux-header',
+        '#isd_print',
+        '#isd_printABook',
+        '#expandCollapseAll',
+        '#leftNav',
+        '.feedbackContainer',
+        '#isd_printABook',
+        '.communityContentContainer',
+        '#ux-footer'
+    ]
 
-    if u[0] == '#':
+    for u in unnecessary:
 
-        try:
-            soup.find(id=u[1:]).decompose()
-        except AttributeError:
-            pass
+        if u[0] == '#':
 
-    elif u[0] == '.':
+            try:
+                soup.find(id=u[1:]).decompose()
+            except AttributeError:
+                pass
 
-        for element in soup.find_all('div', class_=u[1:]):
-            element.decompose()
+        elif u[0] == '.':
 
-source.seek(0)
-source.write(str(soup))
-source.truncate()
-source.close()
+            for element in soup.find_all('div', class_=u[1:]):
+                element.decompose()
+
+    source.seek(0)
+    source.write(str(soup))
+    source.truncate()
+    source.close()
 {{< /highlight >}}
 
 ## External Links
@@ -197,13 +206,24 @@ downloaded documents, looked for links to other downloaded documents, and
 replaced them.
 
 {{< highlight "python" >}}
-for link in soup.find_all('a'):
-    for entry in entries:
-        try:
-            if link.attrs['href'] == entry.link:
-                link.attrs['href'] = entry.path
-        except KeyError:
-            pass
+for entry in entries:
+
+    source = open(entry['path'], 'r+')
+
+    soup = BeautifulSoup(source.read())
+
+    for link in soup.find_all('a'):
+        for entry in entries:
+            try:
+                if link.attrs['href'] == entry['link']:
+                    link.attrs['href'] = entry['path']
+            except KeyError:
+                pass
+
+    source.seek(0)
+    source.write(str(soup))
+    source.truncate()
+    source.close()
 {{< /highlight >}}
 
 # The Docset
@@ -251,7 +271,7 @@ except: pass
 cursor.execute('CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);')
 cursor.execute('CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);')
 
-inserts = [(entry['name'], 'Command', entry['path']) for entry in entries]
+inserts = [(entry['title'], 'Command', entry['path']) for entry in entries]
 
 cursor.executemany('insert into searchIndex(name, type, path) values (?,?,?)', inserts)
 
