@@ -1,6 +1,6 @@
 ---
 title:  "A Docset for PowerShell"
-date:   2015-02-18
+date:   2015-03-18
 url: "a-docset-for-powershell"
 tags:
     - powershell
