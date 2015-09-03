@@ -25,3 +25,33 @@ body {
         padding-top: 130px;
     }
 }
+
+/*
+ * Header
+ */
+
+.header {
+    text-align: center;
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline;
+    font-style: normal;
+    letter-spacing: 10px;
+    line-height: 80px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #121212;
+}
+
+.header :hover {
+    color: #bdc3c7;
+}
+
+@media (min-width: 550px) {
+    .header {
+        font-size: 80px;
+    }
+}
