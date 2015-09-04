@@ -5,7 +5,9 @@
 body {
     font-family: "proxima-nova", sans-serif;
     height: 100%;
+    padding-bottom: 20px;
 }
+
 
 /*
  * Container
@@ -82,6 +84,10 @@ body {
     font-size: 20px;
     letter-spacing: 2px;
     line-height: 20.5px;
+}
+
+.navigation-menu a:hover {
+    color: #f39c12;
 }
 
 .navigation-toggle {
