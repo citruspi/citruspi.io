@@ -47,7 +47,7 @@ body {
 }
 
 .header :hover {
-    color: #bdc3c7;
+    color: #f39c12;
 }
 
 @media (min-width: 550px) {
