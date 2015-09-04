@@ -13,6 +13,7 @@ body {
 
 .container {
     padding-top: 30px;
+    overflow: hidden;
 }
 
 @media (min-width: 550px) {
