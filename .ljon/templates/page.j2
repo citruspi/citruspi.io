@@ -1,0 +1,9 @@
+{% extends "base.j2" %}
+{% block body %}
+        <div class="container">
+            {% include 'header.j2' %}
+            {% include 'menu.j2' %}
+            {% block content %}
+            {% endblock %}
+        </div>
+{% endblock %}
