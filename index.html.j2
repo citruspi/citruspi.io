@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/skeleton.css">
-        <link rel="stylesheet" href="css/moonshine.css">
-
-        <script src="https://use.typekit.net/ypc6utl.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    </head>
-    <body>
+{% extends "base.j2" %}
+{% block body %}
         <div class="container">
             <div class="row header">
                 <a href="/">
@@ -138,6 +125,4 @@
                 </div>
             </div>
         </div>
-        <script src="/js/moonshine.js"></script>
-    </body>
-</html>
+{% endblock %}

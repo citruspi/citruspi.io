@@ -5,34 +5,29 @@ ifeq ($(strip $(BRANCH)),)
 	BRANCH:=$(shell git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 endif
 
-all: clean dist
+all: clean public
 
 clean:
 
-	rm -rf dist
+	rm -rf public
 	rm -rf release
 
-pygments:
+public: clean
 
-	sudo pip install pygments
-	
-	git clone https://github.com/gthank/solarized-dark-pygments.git
-	sudo python sites.py
-	rm -rf solarized-dark-pygments
-	
+	ljon
 
-dist: clean
-
-	hugo --theme=Orchard --destination=dist
-
-release: dist
+release: public
 
 	mkdir release
-	cd dist && zip -r ../dist.zip .
+	cd public  && zip -r ../dist.zip .
 
 	cp dist.zip release/$(COMMIT).zip
 	cp dist.zip release/$(BRANCH).zip
 
 	rm dist.zip
 
-.PHONY: clean pygments
+server:
+
+	ljon --server
+
+.PHONY: clean server
