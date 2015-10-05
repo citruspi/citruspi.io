@@ -1,0 +1,42 @@
+{% extends 'streams/technical/post.j2' %}
+{% block post %}
+<p>I've been struggling to wake up on time for some time now. I could never
+    wake up to alarm clocks - I tried iHomes, phones, etc.</p>
+
+<p>Then I went out and purchased a <a
+    href="http://www.amazon.com/gp/product/B004ZKXY7C">Sharp SPC800 Quartz
+    Analog Twin Bell Alarm Clock (Silver)</a> from Amazon. That too failed to
+    wake me up (it also had problems keeping time). Still struggling to wake
+    up, I purchased a <a href="http://www.amazon.com/gp/product/B000OOWZUK">
+    Sonic Boom SBB500ss Sonic Bomb Loud Plus Vibrating Alarm Clock</a>. The
+    alarm clock is quite loud and vibrates my whole bed... Still, no luck.</p>
+
+<p>Recently, however, I have had success with a system I put together myself.
+    I hooked up my MacBook Pro to a Pioneer Elite Shelf System and added a
+    cronjob to raise the system volume to 100% at a certain time and play an
+    audio file. The Pioneer's volume is always set to 100%.</p>
+
+<p>My crontab currently contains this</p>
+
+{% highlight 'bash' %}
+00  08   *   *   *   osascript -e "set Volume 10" && afplay Train1.mp3
+{% endhighlight %}
+
+<p>It starts to play <code>Train1.mp3</code>, a recording of a train I found
+    online, at 8 AM.</p>
+
+<p>Needless to say, not only does it wake me up, but my neighbors can</p>
+
+<blockquote><p>hear and feel it</p></blockquote>
+
+<p>It shakes the room...</p>
+
+<p>The alarm can be <i>"turned off"</i> by muting the computer for the length of
+    the audio file or by running</p>
+
+{% highlight 'bash' %}
+pkill afplay
+{% endhighlight %}
+
+<p>Now I just need to stop going back to bed after turning it off.</p>
+{% endblock %}
