@@ -1,0 +1,40 @@
+{% extends 'streams/technical/post.j2' %}
+{% block post %}
+<p>Another student walked up to me earlier today, asking for my help in getting
+    some files off a thumb drive and onto an Ubuntu virtual machine running on
+    Windows.</p>
+
+<p>We tried to</p>
+
+<ul>
+    <li>connect the thumb drive to the vm</li>
+    <li>send the files via email</li>
+</ul>
+
+<p>Neither worked - the vm refused to connect to the drive and Firefox in the
+    vm refused to render Gmail properly.</p>
+
+<p>My solution?</p>
+
+<p>I plugged his drive into my Macbook, <code>cd</code>'ed to <code>
+    /Volumes/UNTITLED</code> and ran</p>
+
+{% highlight 'bash' %}
+$ python -m SimpleHTTPServer
+{% endhighlight %}
+
+<p>I then opened <code>IP:8000</code> on his computer and downloaded the files
+    via his web browser.</p>
+
+<p>I've never really taken the time to think about it, but when I'm on a
+    network where I get</p>
+
+<ol>
+    <li>a public IPv4 address</li>
+    <li>gigabit speed connectivity</li>
+</ol>
+
+<p>quickly running a <code>SimpleHTTPServer</code> is faster than pulling out
+    a flash drive, transferring the files onto it, giving it to another person,
+    and having them copy it to their computer.</p>
+{% endblock %}
