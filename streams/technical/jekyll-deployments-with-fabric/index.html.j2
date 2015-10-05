@@ -1,0 +1,60 @@
+{% extends 'streams/technical/post.j2' %}
+{% block post %}
+<p>
+    I put together a quick <a href="http://www.fabfile.org">fabric</a> script
+    yesterday to deploy this site after growing tired of manually building it
+    and SFTP'ing it over.
+</p>
+
+<p>
+    An alternative method which I've used in the past would be to setup a Git
+    repo on the server and have a post-recieve hook which builds the site and
+    copies it over, allowing me to deploy via Git push. However, I didn't want
+    to install Ruby on the server if it would only be used for building Jekyll
+    sites.
+</p>
+
+{% highlight 'python', lineno='inline' %}
+from fabric.api import *
+
+env.user = 'user'
+env.hosts = ['host']
+
+domain = 'citruspi.io'
+subdom = 'www'
+
+def push():
+    local('jekyll build')
+    local('zip -r _site _site')
+    run('rm -f /srv/%s/_site.zip' % (domain))
+    run('rm -rf /srv/%s/_site' % (domain))
+    put('_site.zip', '/srv/%s/_site.zip' % (domain))
+    run('unzip /srv/%s/_site.zip -d /srv/%s' % (domain, domain))
+    run('rm -rf /srv/%s/%s' % (domain, subdom))
+    run('mv /srv/%s/_site /srv/%s/%s' % (domain, domain, subdom))
+{% endhighlight %}
+
+<p>
+    When you run <code>$ fab push</code> the script
+
+    <ol>
+        <li>Builds the site</li>
+        <li>Zips it as <code>_site.zip</code></li>
+        <li>Removes <code>_site.zip</code> from the server if it exists</li>
+        <li>Removes <code>_site/</code> from the server if it exists</li>
+        <li>Copies <code>_site.zip</code> to the server</li>
+        <li>Unzips <code>_site.zip</code> to <code>_site/</code></li>
+        <li>Removes the previous site <code>www/</code> and replaces it with
+            <code>_site/</code></li>
+    </ol>
+</p>
+
+<p>
+    As far as I'm concerned, this is just a temporary measure - I plan to
+    replace this with <a href="http://www.ansible.com">Ansible</a> or <a
+    href="http://www.saltstack.com">Salt Stack</a> when I get some time, but
+    deploying via fabric till then is pretty nice. I also plan to slowly move
+    my other static sites to Jekyll, allowing me to use my deployment script(s)
+    with as many of my static sites as possible.
+</p>
+{% endblock %}
