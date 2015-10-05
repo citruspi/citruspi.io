@@ -1,0 +1,8 @@
+{% extends "post.j2" %}
+{% block post %}
+    {{ super() }}
+    {% block footer %}
+    <p id="meta">Published on {{ date }}. Published to the <a
+        href="/streams/technical">Technical</a> stream.</p>
+    {% endblock %}
+{% endblock %}
