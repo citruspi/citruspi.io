@@ -4,15 +4,25 @@
     },
     "ignore": [
         ".*\\..+\\.j2.json",
-        "\\./public.*"
+        "\\./public.*",
+        ".*/static/images/stream-[a-z]\\.+"
     ],
     "processors": {
         "(.*\\..+)\\.j2": {
             "processor": "jinja"
         },
-        "(.*\\..+)\\.sh": {
-            "processor": "shell",
-            "command": "./process.sh {path} {public_path}"
+        "(.*\/static\/images\/stream-.+)": {
+            "processor": "pillow",
+            "pipeline": [
+                {
+                    "func": "resize",
+                    "width": 500
+                },
+                {
+                    "func": "write",
+                    "name": "{public_path}/{path}/{name}.{extension}"
+                }
+            ]
         }
     }
 }

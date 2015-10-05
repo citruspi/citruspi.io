@@ -1,0 +1,20 @@
+{
+    "streams": [
+        {
+            "path": "technical",
+            "title": "technical"
+        },
+        {
+            "path": "365",
+            "title": "#365"
+        },
+        {
+            "path": "adventure",
+            "title": "adventure"
+        },
+        {
+            "path": "misc",
+            "title": "misc."
+        }
+    ]
+}
