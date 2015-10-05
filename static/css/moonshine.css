@@ -279,6 +279,7 @@ a:hover {
     padding: 8rem 0rem;
     position: relative;
     z-index: 2;
+    letter-spacing: 10px;
 }
 
 .stream h2:hover {
