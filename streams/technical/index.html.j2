@@ -1,0 +1,20 @@
+{% extends "page.j2" %}
+{% block content %}
+<div class="row">
+    <div class="twelve columns stream-index-header" id="technical-stream">
+        <h2>technical</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="twelve columns">
+        <table class="stream-index" id="technical-stream">
+            {%- for post in posts %}
+            <tr class="stream-index-entry" id="technical-stream">
+                <td class="stream-index-entry-title"><a href="{{post['path']}}">{{post['title']}}</a></td>
+                <td class="stream-index-entry-date">{{post['date']}}</td>
+            </tr>
+            {%- endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

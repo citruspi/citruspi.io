@@ -316,3 +316,49 @@ a:hover {
         padding: 11rem 0rem;
     }
 }
+
+table#technical-stream.stream-index {
+    font-size: 2rem;
+    margin-top: 2%;
+}
+
+td.stream-index-entry-title {
+    width: 60%;
+    padding-left: 1rem;
+}
+
+td.stream-index-entry-date {
+    text-align: right;
+    font-size: 1.8rem;
+    width: 40%;
+}
+
+.stream-index-header {
+    border-width: 1px;
+    border-bottom-style: solid;
+}
+
+.stream-index-header h2 {
+    padding-top: 1%;
+    margin-bottom: 0;
+    padding-bottom: 1%;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 10px;
+}
+
+@media(min-width: 1024px) {
+    table#technical-stream.stream-index {
+        width: 60%;
+        margin: 2% 20%;
+    }
+
+    div#technical-stream.stream-index-header {
+        width: 60%;
+        margin: 0 20%;
+    }
+
+    td.stream-index-entry-date {
+        font-size: 2rem;
+    }
+}

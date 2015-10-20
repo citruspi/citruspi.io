@@ -1,0 +1,19 @@
+{
+    "posts": [
+        {
+            "title": "Jekyll Deployments with Fabric",
+            "path": "jekyll-deployments-with-fabric",
+            "date": "06 February 2014"
+        },
+        {
+            "title": "Cron Job Alarm Clocks",
+            "path": "cron-job-alarm-clocks",
+            "date": "05 December 2013"
+        },
+        {
+            "title": "SimpleHTTPServer File Transfers",
+            "path": "simplehttpserver-file-transfers",
+            "date": "03 December 2013"
+        }
+    ]
+}
