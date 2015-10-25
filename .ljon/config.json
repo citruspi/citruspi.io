@@ -5,13 +5,27 @@
     "ignore": [
         ".*\\..+\\.j2.json",
         "\\./public.*",
-        ".*/static/images/stream-[a-z]\\.+"
+        ".*/static/images/stream-[a-z]\\.+",
+        ".*/static/images/collection-[a-z]\\.+"
     ],
     "processors": {
         "(.*\\..+)\\.j2": {
             "processor": "jinja"
         },
         "(.*\/static\/images\/stream-.+)": {
+            "processor": "pillow",
+            "pipeline": [
+                {
+                    "func": "resize",
+                    "width": 500
+                },
+                {
+                    "func": "write",
+                    "name": "{public_path}/{path}/{name}.{extension}"
+                }
+            ]
+        },
+        "(.*\/static\/images\/collection-.+)": {
             "processor": "pillow",
             "pipeline": [
                 {

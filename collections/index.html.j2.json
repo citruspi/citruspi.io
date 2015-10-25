@@ -1,0 +1,9 @@
+{
+    "title": "collections",
+    "collections": [
+        {
+            "path": "projects",
+            "title": "projects"
+        }
+    ]
+}

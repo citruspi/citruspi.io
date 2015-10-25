@@ -1,0 +1,18 @@
+{% extends "page.j2" %}
+{% block content %}
+{%- for row in collections|batch(2) %}
+<div class="row">
+    {%- for column in row %}
+    <div class="six columns">
+        <a href="/collections/{{column['path']}}/">
+            <div class="stream">
+                <h2>{{column['title']}}</h2>
+                <div class="filter"></div>
+                <img src="/static/images/collection-{{column['path']}}.jpg">
+            </div>
+        </a>
+    </div>
+    {%- endfor %}
+</div>
+{%- endfor %}
+{% endblock %}
