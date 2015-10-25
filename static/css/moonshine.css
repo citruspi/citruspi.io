@@ -29,6 +29,26 @@ a:hover {
     color: #666;
 }
 
+blockquote {
+    background: #f9f9f9;
+    border-left: 8px solid #ccc;
+    margin: 1.5em 0em;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote p {
+    display: inline;
+}
+
+blockquote p.source {
+    font-style: italic;
+}
+
+blockquote p.source:before {
+    content: '\2014\A0';
+}
+
 /*
  * Container
  */
@@ -249,18 +269,6 @@ a:hover {
         font-size: 30px;
         margin-top: -35px;
     }
-}
-
-.post blockquote {
-    background: #f9f9f9;
-    border-left: 8px solid #ccc;
-    margin: 1.5em 0em;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
-}
-
-.post blockquote p {
-    display: inline;
 }
 
 .stream {
