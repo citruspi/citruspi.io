@@ -1,0 +1,312 @@
+{% extends 'streams/technical/post.j2' %}
+{% block post %}
+<p>Last week, a friend and I had a conversation that went something like this:</p>
+
+<blockquote>
+  <p><strong>him</strong>: http://kapeli.com/docset_links<br>
+<strong>me</strong>: Do you use Dash?<br>
+<strong>him</strong>: I used to<br>
+<strong>him</strong>: I am going to use now for c# i guess<br>
+<strong>him</strong>: I am trying to see if they have powershell cmdlets<br>
+<strong>me</strong>: I use it, particularly for languages I'm learning to look at the usage for different functions.<br>
+<strong>me</strong>: I feel like you could create a docset for powershell cmdlets if there isn't one.<br>
+<strong>him</strong>: it has all the things except for what I am looking for<br>
+<strong>him</strong>: yeah but I am lazy i want someone else to do that<br></p>
+</blockquote>
+
+<p>Well, challenge accepted.</p>
+
+<p>After doing a quick online search to make sure that I wasn't duplicating an
+existing effort, I started working on creating a docset for <a href="http://kapeli.com/dash">Dash</a> which
+documented the <a href="https://technet.microsoft.com/en-us/library/bb648597%28v=vs.85%29.aspx">PowerShell cmdlets</a>.</p>
+
+<p>Later that evening, or rather a couple hours into the next morning, I had a
+working script which produced a docset which did just that.</p>
+
+<p><video width="100%" autoplay loop poster="/static/media/posts/a-docset-for-powershell/demo-poster.png">
+    <source src="/static/media/posts/a-docset-for-powershell/demo.mp4" type="video/mp4">
+    <source src="/static/media/posts/a-docset-for-powershell/demo.webm" type="video/webm">
+</video></p>
+
+<h1>Cmdlet Reference Pages</h1>
+
+<p>I started by browsing the <a href="https://technet.microsoft.com/en-us/library/bb978526.aspx">Scripting with Windows PowerShell</a> documentation,
+trying to determine the best way of finding all the documentation on cmdlets.</p>
+
+<p>I decided that the easiest way, for now, would be to find all the cmdlet
+reference pages. These are pages that have a list of different cmdlets, with</p>
+
+<ol>
+<li>a direct link to the documentation</li>
+<li>a name and</li>
+<li>a description</li>
+</ol>
+
+<p>for each cmdlet.</p>
+
+<p>I ended up compiling a YAML <a href="https://github.com/citruspi/PowerShell.docset/blob/master/indexes.yaml">list of over 140 of these reference pages</a>. In
+hindsight I wish I'd just taken some extra time to write the code required to
+scrape the root documentation page and find all the cmdlet reference pages.</p>
+
+<p>For each of these reference pages I stored the page's name and link.</p>
+
+{% highlight 'yaml', lineno='inline' %}
+...
+- name: CoreModulesHost
+  url: https://technet.microsoft.com/en-us/library/hh849689(v=wps.640).aspx
+- name: CoreModulesManagement
+  url: https://technet.microsoft.com/en-us/library/hh849827(v=wps.640).aspx
+- name: CoreModulesODataUtils
+  url: https://technet.microsoft.com/en-us/library/dn818506(v=wps.640).aspx
+- name: CoreModulesSecurity
+  url: https://technet.microsoft.com/en-us/library/hh849807(v=wps.640).aspx
+...
+{% endhighlight %}
+
+<h1>Indexing Reference Pages</h1>
+
+<p>Once I had the reference pages, I started working on the code to get all the
+individual cmdlets. Instead of taking the logical route and scraping the table
+provided, I used Beautiful Soup to scrape the table of contents on the left side
+to find all the elements with <code>data-toclevel=2</code> which indicated that it was a
+link to a page documenting a cmdlet.</p>
+
+{% highlight 'python', lineno='inline' %}
+entries = []
+
+for index in indexes:
+    r = requests.get(index['url'])
+
+    if r.status_code == 200:
+        soup = BeautifulSoup(r.content)
+
+        for div in soup.find_all('div'):
+            try:
+                if div['data-toclevel'] == '2':
+                    entries.append({
+                        'link': div.a.attrs['href'].strip(),
+                        'title': div.a.attrs['title'],
+                        'path': div.a.attrs['title']+'.html'
+                    })
+
+            except KeyError:
+                pass
+
+    else:
+        print 'Failed to index {index} ({code})'.format(index = index['name'],
+                                                        code = r.status_code)
+
+{% endhighlight %}
+
+<h1>Downloading the Documentation</h1>
+
+<p>Arguably the easiest part, once I had the list of all the cmdlet documentation
+pages, I proceeded to loop over the list and download each page.</p>
+
+{% highlight 'python', lineno='inline' %}
+for entry in entries:
+    r = requests.get(entry['link'])
+
+    if r.status_code == 200:
+        with open(entry['path'], 'w') as f:
+            f.write(r.content)
+
+    else:
+        print 'Failed to download "{title}" ({code})'.format(
+                                                        code = r.status_code,
+                                                        title = title)
+{% endhighlight %}
+
+<h1>Rewriting the Documentation</h1>
+
+<p>Once I had downloaded all the pages documenting PowerShell cmdlets, I quickly
+discovered I had two problems.</p>
+
+<h2>Busy Documentation</h2>
+
+<p>The pages included the title bar and search field on the top, the table of
+contents on the right, the feedback section on the bottom, etc. These were not
+only unnecessary, but they affected the documentation negatively by making the
+page busy.</p>
+
+<p><img src="/static/media/posts/a-docset-for-powershell/busy-documentation.png" width="100%"/></p>
+
+<p>I opened up the web inspector and made a list of all the elements I wanted to
+remove. With that list in hand, I looped over each of the documentation pages
+and used Beautiful Soup to find and remove those elements.</p>
+
+{% highlight 'python', lineno='inline' %}
+for entry in entries:
+    source = open(entry['path'], 'r+')
+
+    soup = BeautifulSoup(source.read())
+
+    unnecessary = [
+        '#megabladeContainer',
+        '#ux-header',
+        '#isd_print',
+        '#isd_printABook',
+        '#expandCollapseAll',
+        '#leftNav',
+        '.feedbackContainer',
+        '#isd_printABook',
+        '.communityContentContainer',
+        '#ux-footer'
+    ]
+
+    for u in unnecessary:
+        if u[0] == '#':
+            try:
+                soup.find(id=u[1:]).decompose()
+            except AttributeError:
+                pass
+
+        elif u[0] == '.':
+            for element in soup.find_all('div', class_=u[1:]):
+                element.decompose()
+
+    source.seek(0)
+    source.write(str(soup))
+    source.truncate()
+    source.close()
+{% endhighlight %}
+
+<h2>External Links</h2>
+
+<p>The documentation now looked clean, but I still had a problem. Links in the
+source code used absolute paths instead of relative ones, which meant that every
+link to another cmdlet opened the documentation in the web browser. This lead to</p>
+
+<ol>
+<li>a poor experience</li>
+<li>broken links when offline</li>
+</ol>
+
+<p>Once again, Beautiful Soup came to the rescue. I opened up each of the
+downloaded documents, looked for links to other downloaded documents, and
+replaced them.</p>
+
+{% highlight 'python', lineno='inline' %}
+for entry in entries:
+    source = open(entry['path'], 'r+')
+
+    soup = BeautifulSoup(source.read())
+
+    for link in soup.find_all('a'):
+        for entry in entries:
+            try:
+                if link.attrs['href'] == entry['link']:
+                    link.attrs['href'] = entry['path']
+            except KeyError:
+                pass
+
+    source.seek(0)
+    source.write(str(soup))
+    source.truncate()
+    source.close()
+{% endhighlight %}
+
+<h1>The Docset</h1>
+
+<p>Once I had all the entries indexed and downloaded, I set about actually
+creating the docset. Following <a href="http://kapeli.com/docsets#dashDocset">the instructions</a> on the developer's website,
+I created the directory structure.</p>
+
+{% highlight 'bash' %}
+$ mkdir -p PowerShell.docset/Contents/Resources/Documents/
+{% endhighlight %}
+
+<p>I placed <code>Info.plist</code> in <code>PowerShell.docset/Contents</code>.</p>
+
+{% highlight 'xml', lineno='inline' %}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>powershell</string>
+    <key>CFBundleName</key>
+    <string>PowerShell</string>
+    <key>DocSetPlatformFamily</key>
+    <string>powershell</string>
+    <key>isDashDocset</key>
+    <true/>
+</dict>
+</plist>
+{% endhighlight %}
+
+<p>I copied the downloaded documentation into the required directory and then used
+<code>sqlite3</code> to create and populate the necessary tables.</p>
+
+{% highlight 'python', lineno='inline' %}
+path = 'PowerShell.docset/Contents/Resources/docSet.dsidx'
+
+database = sqlite3.connect(path)
+
+cursor = database.cursor()
+
+try: cursor.execute('DROP TABLE searchIndex;')
+except: pass
+
+cursor.execute('CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);')
+cursor.execute('CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);')
+
+inserts = [(entry['title'], 'Command', entry['path']) for entry in entries]
+
+cursor.executemany('insert into searchIndex(name, type, path) values (?,?,?)', inserts)
+
+database.commit()
+database.close()
+{% endhighlight %}
+
+<p>I was then able to load <code>PowerShell.docset</code> into Dash and browse and search the
+PowerShell cmdlet documentation.</p>
+
+<h1>Current State</h1>
+
+<h2>Source Code</h2>
+
+<p>The code is available on <a href="https://github.com/citruspi/PowerShell.docset">GitHub</a>
+and dedicated to the public domain.</p>
+
+<p>Assuming you have Python and <code>pip</code> installed, building it is as easy as running</p>
+
+{% highlight 'bash' %}
+$ make dependencies
+$ make
+{% endhighlight %}
+
+<p>once you've cloned the repository.</p>
+
+<h2>Stats</h2>
+
+<p>When I last built it, on the 11th of March, it took about 75 minutes to build
+the docset which includes 4,970 different cmdlets. The end result was ~120 MB
+raw and ~10 MB once compressed.</p>
+
+<h2>Installation</h2>
+
+<p>Since manually building it is a pain, I'm hosting a docset feed located at</p>
+
+<p><code>
+http://powershell.docset.citruspi.io/feed/
+</code></p>
+
+<p><a href="dash-feed://http%3A%2F%2Fpowershell.docset.citruspi.io%2Ffeed%2F">Click here</a> to have Dash subscribe to the feed.</p>
+
+<p>(The feed links to a compressed copy).</p>
+
+<p>I'd like to put a script together which will rebuild the docset every week,
+calculate it's checksum to determine if something has changed, and automatically
+update the feed.</p>
+
+<h2>Future Plans</h2>
+
+<ul>
+<li>Improve speed</li>
+<li>Automatic weekly updates</li>
+<li>Automatically parse cmdlet reference pages</li>
+<li>Document more than just cmdlets</li>
+<li>Build an index listing each cmdlet with it's description</li>
+</ul>
+{% endblock %}
