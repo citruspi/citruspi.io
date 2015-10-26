@@ -19,6 +19,11 @@
             "title": "SimpleHTTPServer File Transfers",
             "path": "simplehttpserver-file-transfers",
             "date": "03 December 2013"
+        },
+        {
+            "title": "Self-Hosting Sentry",
+            "path": "self-hosting-sentry",
+            "date": "13 March 2013"
         }
     ]
 }

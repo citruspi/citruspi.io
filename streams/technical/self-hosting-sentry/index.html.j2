@@ -1,0 +1,200 @@
+{% extends 'streams/technical/post.j2' %}
+{% block post %}
+<h1>Platform</h1>
+
+<p>I'm currently running Sentry on a 32 bit Micro EC2 instance with Amazon Linux.</p>
+
+<h1>Database</h1>
+
+<p>Sentry requires a database and can use any of the following</p>
+
+<ul>
+<li>SQLite (default)</li>
+<li>MySQL</li>
+<li>Postgres</li>
+</ul>
+
+<p>However, according to the Documentation, SQLite is <em>not fully supported</em>, so you should probably switch to Postgres or MySQL (Amazon RDS, anyone?) at some point.</p>
+
+<p>I opted to stick with SQLite for now because I just wanted to get it running. I'll most likely setup AWS RDS in the near future.</p>
+
+<h1>Installation</h1>
+
+<p>I'm going to assume that, by now, you have:</p>
+
+<ul>
+<li>launched an instance</li>
+<li>downloaded the key pair</li>
+<li>associated an elastic ip with the instance</li>
+</ul>
+
+{% highlight 'bash' %}
+$ ssh -i ~/.ssh/public.pem ec2-user@ElasticIP
+$ sudo yum install gcc python-devel
+$ sudo easy_install -U sentry
+{% endhighlight %}
+
+<h1>Setup</h1>
+
+<p>After the installation has finished, run</p>
+
+{% highlight 'bash' %}
+$ sentry init
+{% endhighlight %}
+
+<p>A config file named <code>sentry.conf.py</code> will be created in <code>~/ec2-user/.sentry/</code>:</p>
+
+<blockquote>
+  <p>Configuration file created at '/home/ec2-user/.sentry/sentry.conf.py'</p>
+</blockquote>
+
+<p>You don't have to modify any of the settings right now, but we will later.</p>
+
+<p>Now, run</p>
+
+{% highlight 'bash' %}
+$ sentry upgrade
+{% endhighlight %}
+
+<p>If it prints out</p>
+
+{% highlight 'bash' %}
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no):
+{% endhighlight %}
+
+<p>Enter <code>yes</code> and fill out the fields it provides. The user you create right now will be the <em>superuser</em> for your Sentry installation.</p>
+
+<p>When it finishes setting up Sentry, you'll be ready to go to the next section.</p>
+
+<h1>Is It Up?</h1>
+
+<p>In your console, run</p>
+
+{% highlight 'bash' %}
+$ sentry start
+{% endhighlight %}
+
+<p>It should start up three workers:</p>
+
+{% highlight 'bash' %}
+2013-03-14 02:38:26 [1440] [INFO] Starting unicorn 0.17.2
+2013-03-14 02:38:26 [1440] [INFO] Listening at: http://0.0.0.0:9000 (1440)
+2013-03-14 02:38:26 [1440] [INFO] Using worker: sync
+2013-03-14 02:38:26 [1449] [INFO] Booting worker with pid: 1449
+2013-03-14 02:38:26 [1450] [INFO] Booting worker with pid: 1450
+2013-03-14 02:38:26 [1451] [INFO] Booting worker with pid: 1451
+{% endhighlight %}
+
+<p>In your browser, open <code>ElasticIP:9000</code>. You should be greeted with a login prompt:</p>
+
+<p><a href="http://i.imgur.com/bEsUAiu.png"><img alt="" width="100%" src="http://i.imgur.com/bEsUAiu.png" /></a></p>
+
+<p>It works!</p>
+
+<p>Now, you can login, setup teams and projects, and get to work.</p>
+
+<h1>Extra Credit</h1>
+
+<h2>Disable Sign Ups</h2>
+
+<p>Right now, any one who stumbles upon your install can create an account. This isn't really a big problem because they'll be greeted with</p>
+
+<blockquote>
+  <p>You are not a member of any teams in Sentry and you do not have access to create a new team.</p>
+</blockquote>
+
+<p>However, it's still a nuisance.</p>
+
+<p>To disable user registrations, just add</p>
+
+{% highlight 'python' %}
+SENTRY_ALLOW_REGISTRATION = False
+{% endhighlight %}
+
+<p>to the <code>sentry.conf.py</code> file.</p>
+
+<p>You'll need to run</p>
+
+{% highlight 'bash' %}
+$ sentry upgrade
+{% endhighlight %}
+
+<p>again (no prompt this time) and kill and restart the Sentry process for the changes to take effect.</p>
+
+<p>If you read the docs, there's a ton of other <a href="http://sentry.readthedocs.org/en/latest/config/index.html">config options</a>.</p>
+
+<h2>Reverse Proxy</h2>
+
+<p>I don't want to have to type in <code>http://174.129.196.120:9000/</code> every time, so I set up a reverse proxy with Nginx on my Linode VPS.</p>
+
+{% highlight 'nginx', lineno='inline' %}
+server {
+    server_name sentry.domain.com;
+    access_log /you_pick/logs/access.log;
+    error_log /you_pick/logs/error.log;
+
+    keepalive_timeout 5;
+
+    location / {
+        proxy_pass         http://ElasticIP:9000;
+        proxy_redirect     off;
+
+        proxy_set_header   Host              $host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+{% endhighlight %}
+
+<h2>It's A Service</h2>
+
+<p>You should probably manage Sentry processes some way. I decided to go with <a href="http://supervisord.org/">Supervisor</a>.</p>
+
+<p>If you do too, install Supervisor:</p>
+
+{% highlight 'bash' %}
+$ sudo easy_install supervisor
+{% endhighlight %}
+
+<p>Create and edit the <code>.conf</code> file:</p>
+
+{% highlight 'bash' %}
+$ sudo vim /etc/supervisord.conf
+{% endhighlight %}
+
+<p>and add</p>
+
+{% highlight 'ini' %}
+[program:sentry-web]
+command=/usr/bin/sentry start http
+autostart=true
+autorestart=true
+redirect_stderr=true
+{% endhighlight %}
+
+<p>to it. Then, run it with</p>
+
+{% highlight 'bash' %}
+$ supervisord -c /etc/supervisord.conf
+{% endhighlight %}
+
+<h2>Plugins</h2>
+
+<p>You can extend Sentry with plugins. There are plugins for</p>
+
+<ul>
+<li>Bitbucket</li>
+<li>Campfire</li>
+<li>Github</li>
+<li>Grove.io</li>
+<li>Hipchat</li>
+<li>Notifico</li>
+<li>Pushover</li>
+<li>Trello</li>
+<li>WhatsApp</li>
+</ul>
+
+<p>A full list of plugins and download links can be found <a href="http://sentry.readthedocs.org/en/latest/plugins/index.html">here</a>.</p>
+{% endblock %}
