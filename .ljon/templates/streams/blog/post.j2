@@ -1,0 +1,7 @@
+{% extends "post.j2" %}
+{% block post %}
+    {{ super() }}
+    {% block footer %}
+    <p id="meta">Published on {{ date }}.</p>
+    {% endblock %}
+{% endblock %}

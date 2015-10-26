@@ -1,8 +1,9 @@
 {
+    "title": "Streams",
     "streams": [
         {
-            "path": "technical",
-            "title": "technical"
+            "path": "blog",
+            "title": "blog"
         },
         {
             "path": "365",
