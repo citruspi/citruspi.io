@@ -7,12 +7,12 @@
 <p>We tried to</p>
 
 <ul>
-    <li>connect the thumb drive to the vm</li>
+    <li>connect the thumb drive to the VM</li>
     <li>send the files via email</li>
 </ul>
 
-<p>Neither worked - the vm refused to connect to the drive and Firefox in the
-    vm refused to render Gmail properly.</p>
+<p>Neither worked - the VM refused to connect to the drive and Firefox in the
+    VM refused to render Gmail properly.</p>
 
 <p>My solution?</p>
 
@@ -26,15 +26,15 @@ $ python -m SimpleHTTPServer
 <p>I then opened <code>IP:8000</code> on his computer and downloaded the files
     via his web browser.</p>
 
-<p>I've never really taken the time to think about it, but when I'm on a
-    network where I get</p>
+<p>You can reduce the amount of typing required by creating an alias:</p>
 
-<ol>
-    <li>a public IPv4 address</li>
-    <li>gigabit speed connectivity</li>
-</ol>
+{% highlight 'bash' %}
+$ alias server="python -m SimpleHTTPServer"
+$ server
+Serving HTTP on 0.0.0.0 port 8000 ...
+{% endhighlight %}
 
-<p>quickly running a <code>SimpleHTTPServer</code> is faster than pulling out
+<p>Quickly running an HTTP server is faster than pulling out
     a flash drive, transferring the files onto it, giving it to another person,
     and having them copy it to their computer.</p>
 {% endblock %}
