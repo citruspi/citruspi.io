@@ -25,4 +25,5 @@ deploy:
   local-dir: release
   acl: public_read
   on:
+    all_branches: true
     repo: citruspi/citruspi.io
