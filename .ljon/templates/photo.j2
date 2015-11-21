@@ -1,0 +1,10 @@
+{% extends "page.j2" %}
+{% block content %}
+<div class="row">
+    <div class="twelve columns content post">
+        <p id="title">{{ date }}</p>
+        {% block post %}
+        {% endblock %}
+   </div>
+</div>
+{% endblock %}

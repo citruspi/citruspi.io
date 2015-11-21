@@ -12,13 +12,16 @@
         <link rel="stylesheet" href="/static/css/skeleton.css">
         <link rel="stylesheet" href="/static/css/solarized_dark.css">
         <link rel="stylesheet" href="/static/css/moonshine.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         {% endblock %}
     </head>
     <body>
         {% block body %}
         {% endblock %}
-        <script src="/static/js/moonshine.js"></script>
         <script src="https://use.typekit.net/ypc6utl.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+        <script src="/static/js/moonshine.js"></script>
     </body>
 </html>

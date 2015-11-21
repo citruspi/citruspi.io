@@ -37,6 +37,16 @@
                     "name": "{public_path}/{path}/{name}.{extension}"
                 }
             ]
+        },
+        "(.*\/static\/images\/photography\/.*\/.+\\.jpg)": {
+            "copy": true,
+            "processor": "pillow",
+            "pipeline": [
+                {
+                    "func": "write",
+                    "name": "{public_path}/{path}/{name}-web.{extension}"
+                }
+            ]
         }
     }
 }
