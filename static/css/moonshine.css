@@ -406,6 +406,24 @@ div#map.threesixtyfive.map {
 }
 
 div#map.about.map {
-    height: 80rem;
+    height: 25rem;
     width: 100%;
+}
+
+@media(min-width: 768px) {
+    div#map.about.map {
+        height: 40rem;
+    }
+}
+
+@media(min-width: 1024px) {
+    div#map.about.map {
+        height: 50rem;
+    }
+}
+
+@media(min-width: 1920px) {
+    div#map.about.map {
+        height: 80rem;
+    }
 }
