@@ -1,13 +1,41 @@
 {% extends "page.j2" %}
 {% block content %}
 <div class="row">
-    <div class="twelve columns">
-        <img id="photography-man-with-camera" src="/static/images/toolbox.jpg">
+    <div class="twelve columns stream-index-header" id="technical-stream">
+        <h2>projects</h2>
     </div>
 </div>
+
 <div class="row">
-    <div class="twelve columns" id="photography-coming-soon">
-        <h2>Coming Soon</h2>
+    <div class="twelve column">
+        <div class="collections projects intro">
+            <blockquote>
+                <p>For more projects, check out my <a
+                    href="https://github.com/citruspi/">GitHub profile</a>.</p>
+            </blockquote>
+        </div>
     </div>
 </div>
+
+{% for project in projects %}
+<div class="row">
+    <div class="twelve columns collections project entry">
+        <h2 class="collections project title">{{ project['title'] }}</h2>
+        <p>
+        {% for link in project['links'] %}
+        <a href="{{ link['href'] }}" class="collections project link">{{ link['title'] }}</a>
+        {% endfor %}
+        </p>
+        <hr class="collections project breaker">
+        <p class="collections project description">
+            {{ project['description'] }}
+         </p>
+        <p class="collections project tags">
+            {% for tag in project['tags'] %}
+            <a class="collections project tag">#{{ tag }}</a>
+            {% endfor %}
+        </p>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

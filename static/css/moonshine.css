@@ -335,6 +335,52 @@ blockquote p.source:before {
     }
 }
 
+table#travel-stream.stream-index {
+    font-size: 1.7rem;
+    margin-top: 2%;
+    width: 100%;
+}
+
+td.travel-stream-type {
+    width: 5%;
+    padding-left: 1rem;
+}
+
+td.travel-stream-date {
+    text-align: right;
+    width: 20%;
+    padding: 0;
+}
+
+td.travel-stream-arrow {
+    text-align: center;
+    width: 5%;
+    padding: 0;
+    padding-left:1rem;
+}
+
+td.travel-stream-identifier {
+    width: 20%;
+    padding-left: 1rem;
+}
+
+td.travel-stream-location {
+    width: 25%;
+    padding-left: 1rem;
+}
+
+@media(min-width: 1024px) {
+    table#travel-stream.stream-index {
+        width: 60%;
+        margin: 2% 20%;
+    }
+
+    div#travel-stream.stream-index-header {
+        width: 60%;
+        margin: 0 20%;
+    }
+}
+
 table#technical-stream.stream-index {
     font-size: 2rem;
     margin-top: 2%;
@@ -439,3 +485,54 @@ div#map.about.map {
         height: 80rem;
     }
 }
+
+.collections.projects.intro {
+    margin-bottom: -3rem;
+}
+
+@media(min-width: 1024px) {
+    .collections.projects.intro {
+        margin-bottom: 0rem;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+.collections.project.entry {
+    border-width: 1px;
+    border-style: solid;
+    padding: 1.5rem;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+@media(min-width: 1024px) {
+    .collections.project.entry {
+        width: 60%;
+        margin: 2% 20%;
+    }
+}
+
+.collections.project.title {
+    margin-bottom: 1rem;
+}
+
+.collections.project.breaker {
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
+.collections.project.tags {
+    margin-bottom: 0rem;
+}
+
+.collections.project.link:after {
+    content: "\00a0\00a0\00a0";
+}
+
+.collections.project.tag:after {
+    content: "\00a0\00a0\00a0";
+}
+
+
