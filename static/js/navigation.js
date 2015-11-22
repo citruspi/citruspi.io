@@ -1,4 +1,4 @@
-window.onload = function() {
+function configureNavigation() {
     window.menuOpen = false;
     document.getElementsByClassName('navigation-toggle')[0].onclick = function() {
         menu = document.getElementsByClassName('navigation-menu')[0];
@@ -7,5 +7,8 @@ window.onload = function() {
         else { menu.style.display = "block"; }
 
         window.menuOpen = !window.menuOpen;
-    }
+    };
 }
+
+onLoad(configureNavigation);
+onResize(configureNavigation);
