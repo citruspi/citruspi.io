@@ -1,29 +1,65 @@
 {% extends "page.j2" %}
+
+{% block externalstylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+{% endblock %}
+
+{% block externalscripts %}
+{{ super() }}
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+{% endblock %}
+
+{% block internalscripts %}
+{{ super() }}
+<script src="/static/js/map.js"></script>
+{% endblock %}
+
 {% block content %}
+</div>
+<div class="row" style="width:100%;">
+    <a href="/static/images/about-profile.jpg">
+        <img src="/static/images/about-profile.jpg" width="100%"></img>
+    </a>
+</div>
+<div class="container" style="padding-top:40px;">
 <div class="row">
-    <div class="twelve columns content">
-        <p>I'm Mihir, but I go by <a href="https://twitter.com/citruspi">
+    <div class="twelve columns content post">
+        <p>Hey! I'm Mihir, but I go by <a href="https://twitter.com/citruspi">
             @citruspi</a> on the Internet.</p>
+        <h2>Academia and Community</h2>
         <p>I'm a student at the Rochester Institute of Technology pursuing a
-            degree in Computing Security. I'm also a member of the
+            degree in Computing Security. I'm a member of the
             <a href="https://csh.rit.edu">Computer Science House</a>, a
             special interest house, and the
             <a href="http://magic.rit.edu/foss/">FOSS Box</a>, an applied
-            research laboratory.</p>
+            research laboratory. I also occassionally work on projects with the
+            <a href="http://hhroc.github.io">Hacks/Hackers Rochester</a>
+            group.</p>
+
+        <p>Like most programmers I've met, I enjoy conferences and meetups. I
+            attended <a href="https://us.pycon.org/">PyCon</a> in 2014 and 2015
+            and <a href="http://nebraskacode.com">Nebraska.Code()</a> in 2015.
+            You might also find me at the occassional BarCamp (unconference) or
+            at a Python User Group meeting.</p>
+        <h2>Work and Projects</h2>
         <p>I spend a lot of my time working on personal projects,
-            all of which <a href="https://github.com/citruspi">are open source
-            </a>. I'm passionate about open source work and the public domain,
-            which many of my projects are dedicated to. I previously interned
-            at <a href="https://apple.com">Apple, Inc.</a> where I worked
-            within the GPU Software Engineering Organization. Since January
-            2015, I've been interning at <a href="https://hudl.com">Hudl</a>,
-            where I work on infrastructure.</p>
-        <p>When I have the time, I also enjoy fiction and nonfiction reading
-            material. I grew up on, and continue to love, the
-            <a href="https://en.wikipedia.org/wiki/The_Adventures_of_Tintin">
-            Tintin</a> and <a href="https://en.wikipedia.org/wiki/Asterix">
-            Asterix and Obelix</a> comics. Unfortunately, I don't get much
-            reading time at this point.</p>
+            all of which <a href="https://github.com/citruspi">are open
+            source</a>. I'm passionate about open source work and the public
+            domain, which many of my projects are dedicated to. As far as
+            projects go, my interests lie in security, distributed systems,
+            infrastructure and operations, automating things that probably
+            shouldn't be automated, and API design. I <span
+            style="color:#e51c23;">&hearts;</span> a well designed API.</p>
+        <p>I previously interned at <a href="https://apple.com">Apple, Inc.</a>
+            where I worked within the GPU Software Engineering Organization.
+            Since January 2015, I've been interning at <a
+            href="https://hudl.com">Hudl</a>, where I worked on infrastructure
+            until November when I switched to site reliability. Obligatory <a
+            href="http://public.hudl.com/jobs/">we're hiring!</a> Also
+            obligatory "views are my own, not my employer's," yada yada
+            yada&hellip;</p>
+        <h2>Travel</h2>
         <p>I also spend a lot of my time travelling. Not as much as I'd like to
             though. I've visited twenty six U.S. states and ten countries
             (including the U.S.). I've also lived in <a
@@ -38,20 +74,50 @@
             href="https://en.wikipedia.org/wiki/Lincoln,_Nebraska">Lincoln,
             Nebraska</a>, and <a href="https://en.wikipedia.org/wiki/Boston">
             Boston, Massachusetts</a>.
-        <p>My primary tools for software development would include <a
-            href="https://git-scm.com">git</a>, <a href="http://www.vim.org">
+    </div>
+</div>
+</div>
+<div class="row" style="width:100%;">
+    <div id="map" class="about map"
+        data-lat="35.272532"
+        data-long="-8.613281"
+        data-zoom="3"
+        data-markers="19.075984,72.877656,21.027764,105.834160,48.856614,2.352222,49.326990,-123.073280,40.276782,-74.323554,43.161030,-77.610922,37.368830,-122.036350,40.825763,-96.685198,42.360082,-71.058880,"></div>
+</div>
+<div class="container" style="padding-top:30px;">
+<div class="row">
+    <div class="twelve columns content post">
+        <h2>Hobbies &amp; Pastimes</h2>
+        <p>Photography is my creative outlet. A lot of my current work is
+            nature/landscape material, but I'm working on doing more street
+            photography as well as some astrophotography when the conditions are
+            right. Occassionally I'll whip out my film camera, because getting
+            the film developed and then getting to hold it just feels wonderful.
+            </p>
+        <p>When I'm not writing code, taking photos, or travelling, I enjoy
+            reading fiction and nonfiction material. I grew up on, and continue to love, the
+            <a href="https://en.wikipedia.org/wiki/The_Adventures_of_Tintin">
+            Tintin</a> and <a href="https://en.wikipedia.org/wiki/Asterix">
+            Asterix and Obelix</a> comics. Unfortunately, I don't get much
+            reading time at this point &mdash; most of the reading I've managed
+            to do recently has been restricted to when I'm flying.</p>
+        <h2>Tool Belt</h2>
+        <p>My primary tools for software development include the OS X Terminal,
+            <a href="https://git-scm.com">git</a>, <a href="http://www.vim.org">
             vim</a>, a 13" MacBook Air, <a href="https://www.python.org">
             Python</a>, <a href="https://golang.org">Go</a>, <a
             href="https://tmux.github.io">tmux</a>, and servers running either
             <a href="http://centos.org">CentOS</a> or <a
             href="https://aws.amazon.com/amazon-linux-ami/">Amazon Linux</a>.
             Every year, I think it'll finally be the year of Linux, and every
-            year it isn't. Depending on the setting, I may be using <a
+            year it isn't. Depending on the location, I may be using <a
             href="http://www.apple.com/shop/product/MD827LL/A">Apple EarPods
             </a> or <a
             href="http://www.audio-technica.com/cms/headphones/99aff89488ddd6b1/index.html">
-            ATH-M50x headphones</a>.</p>
-        <p>My primary tools for photography would be my <a
+            ATH-M50x headphones</a>. My personal infrastructure runs on <a 
+            href="https://aws.amazon.com/ec2/">AWS EC2</a> for the most part,
+            managed by <a href="http://www.ansible.com">Ansible</a>.</p>
+        <p>For photography, my primary body is the<a
             href="http://www.nikonusa.com/en/Nikon-Products/Product/dslr-cameras/1519/D5300.html">
             Nikon D5300</a> with the following lenses - <a
             href="http://www.nikonusa.com/en/Nikon-Products/Product/Camera-Lenses/AF-S-DX-NIKKOR-35mm-f%252F1.8G.html">
@@ -59,22 +125,25 @@
             href="http://www.tokinalens.com/tokina/products/atxpro/atx116prodxii/">
             Tokina AT-X 11-16mm f/2.8 PRO DX-II</a>, and <a
             href="http://www.nikonusa.com/en/Nikon-Products/Product/Camera-Lenses/AF-S-VR-Zoom-Nikkor-70-300mm-f%252F4.5-5.6G-IF-ED.html">
-            AF-S VR Zoom-Nikkor 70-300mm f/4.5-5.6G IF-ED</a> - and <a
+            AF-S VR Zoom-Nikkor 70-300mm f/4.5-5.6G IF-ED</a>. I use<a
             href="https://www.adobe.com/products/photoshop-lightroom.html">
-            Adobe Lightroom</a> running on a 15" MacBook Pro (w/Retina). I
-            frequently use a <a
-            href="http://www.manfrotto.com/product/0/MKCOMPACTACN-BK/_/Compact_Action_Black">
-            Manfrotto Compaction Action tripod</a> and I carry all of this
-            around in a <a
-            href="http://www.manfrotto.com/veloce-v-backpack-black">Manfrotto
-            Veloce backpack</a>.</p>
-        <p>On the Internet, you can find me on <a
+            Adobe Lightroom</a> running on a 15" MacBook Pro (w/Retina) for
+            managing and processing photos. For film photography I have a <a
+            href="https://en.wikipedia.org/wiki/Nikon_FE">Nikon FE</a> and I've
+            recently acquired a <a
+            href="https://en.wikipedia.org/wiki/GoPro#HERO4">GoPro HERO4</a>
+            for timelapses and videos and a <a
+            href="https://en.wikipedia.org/wiki/Fujifilm_X100#Fujifilm_X100T">
+            Fujifilm X100T</a> to use as a daily walking around camera.</p>
+        <h2>On the Internet</h2>
+        <p>You can find me on <a
             href="https://twitter.com/citruspi">Twitter</a> and <a
-            href="https://github.com/citruspi">GitHub</a>. I used to use <a
-            href="https://app.net">App.net</a>, but well&hellip;. And I used to
-            use <a href="https://last.fm">last.fm</a>, but Apple Music Radio
-            doesn't suport it. I also hang out on <a href="freenode.net">
-            freenode</a>.</p>
+            href="https://github.com/citruspi">GitHub</a>. I also hang out on
+            <a href="freenode.net">freenode</a>.</p>
+        <p>I used to use <a
+            href="https://app.net">App.net</a>, but well&hellip; I also
+            previously used <a href="https://last.fm">last.fm</a>, but Apple
+            Music Radio doesn't suport it. </p>
         <p>If you want to get in contact, feel free to poke me in meatspace,
             tweet at me on Twitter, ping me on IRC, or just <a
             href="mailto:hello@mihirsingh.com">send me an email</a> - <a

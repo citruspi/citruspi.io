@@ -404,3 +404,8 @@ table.threesixtyfive.post.metadata {
 div#map.threesixtyfive.map {
     height: 40em;
 }
+
+div#map.about.map {
+    height: 80rem;
+    width: 100%;
+}
