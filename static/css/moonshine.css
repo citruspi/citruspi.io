@@ -338,6 +338,7 @@ blockquote p.source:before {
 table#technical-stream.stream-index {
     font-size: 2rem;
     margin-top: 2%;
+    width: 100%;
 }
 
 td.stream-index-entry-title {
