@@ -5,10 +5,35 @@ window.onload = function() {
 
     var mapElement = document.getElementById('map')
 
+    var browserWidth = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
+    zoomData = mapElement.dataset.zoom;
+
+    if (zoomData === undefined) {
+        zoomData = "0,3,";
+    }
+
+    zoomLevels = zoomData.split(',');
+
+    if (zoomLevels.length % 2 === 1) {
+        zoomLevels.splice(zoomLevels.length-1, 1);
+    }
+
+    for (i = 0; i < zoomLevels.length; i+=2) {
+        width = parseInt(zoomLevels[i]);
+        level = parseInt(zoomLevels[i+1]);
+
+        if (browserWidth >= width) {
+            mapZoom = level;
+        }
+    }
+
     var map = L.map('map')
                 .addLayer(main)
                 .setView([mapElement.dataset.lat, mapElement.dataset.long],
-                         mapElement.dataset.zoom);
+                         mapZoom);
 
     map.scrollWheelZoom.disable();
 

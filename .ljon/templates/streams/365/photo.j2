@@ -94,7 +94,7 @@
                 <td><div id="map" class="threesixtyfive map"
                         data-lat="{{exif['location']['lat']}}"
                         data-long="{{exif['location']['long']}}"
-                        data-zoom="{{exif['location']['zoom']|default(15)}}"
+                        data-zoom="{{exif['location']['zoom']|default("0,9,768,10,")}}"
                         data-markers="{{exif['location']['lat']}},{{exif['location']['long']}},"></div></td>
             </tr>
             {% endif %}

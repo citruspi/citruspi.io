@@ -402,7 +402,13 @@ table.threesixtyfive.post.metadata {
 }
 
 div#map.threesixtyfive.map {
-    height: 40em;
+    height: 20em;
+}
+
+@media(min-width: 768px) {
+    div#map.threesixtyfive.map {
+        height: 40em;
+    }
 }
 
 div#map.about.map {
@@ -419,6 +425,12 @@ div#map.about.map {
 @media(min-width: 1024px) {
     div#map.about.map {
         height: 50rem;
+    }
+}
+
+@media(min-width: 1440px) {
+    div#map.about.map {
+        height: 60rem;
     }
 }
 
