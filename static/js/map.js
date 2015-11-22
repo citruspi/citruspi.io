@@ -10,6 +10,8 @@ window.onload = function() {
                 .setView([mapElement.dataset.lat, mapElement.dataset.long],
                          mapElement.dataset.zoom);
 
+    map.scrollWheelZoom.disable();
+
     markers = mapElement.dataset.markers;
 
     if (markers !== undefined) {
