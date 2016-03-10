@@ -1,0 +1,42 @@
+{
+    "title": "RHoK The Hood",
+    "slug": "rhok-the-hood",
+    "attachments": [
+        {
+            "type": "image",
+            "name": "rochester-ny-violent-crime-rate.png",
+            "long": "width",
+            "caption": "Rochester, NY; Violent Crime Rate"
+        },
+        {
+            "type": "image",
+            "name": "rochester-ny-population-40s.png",
+            "long": "width",
+            "caption": "Rochester, NY; Population in the 40's"
+        },
+        {
+            "type": "image",
+            "name": "rochester-ny-american-indian-population.png",
+            "long": "width",
+            "caption": "Rochester, NY; American Indian Population"
+        },
+        {
+            "type": "image",
+            "name": "rochester-ny-unemployment-rate.png",
+            "long": "width",
+            "caption": "Rochester, NY; Unemployment Rate"
+        }
+    ],
+    "links": [
+        {
+            "icon": "link",
+            "title": "Home Page",
+            "link": "https://rhokthehood.com"
+        },
+        {
+            "icon": "github",
+            "title": "GitHub",
+            "link": "https://github.com/citruspi/RHoKTheHood"
+        }
+    ]
+}
