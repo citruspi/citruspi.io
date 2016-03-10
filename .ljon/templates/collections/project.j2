@@ -16,6 +16,9 @@
         {% endif %}
             <img class="attachment" alt="..." src="/static/media/collections/projects/{{ slug }}/{{ attachment['name'] }}" {{ attachment['long'] }}="100%"/>
         </a>
+        {% if attachment['caption'] %}
+        <p class="attachment caption">{{ attachment['caption'] }}</p>
+        {% endif %}
         {% elif attachment['type'] == 'video' %}
             <video width="100%" autoplay="" loop="" class="attachment">
                 {% for source in attachment['sources'] %}

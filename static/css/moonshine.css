@@ -586,3 +586,10 @@ img.attachment {
 p.project.link {
     margin-bottom: 0.75rem;
 }
+
+p.attachment.caption {
+    margin-top: -25px;
+    font-size: 13px;
+    font-style: italic;
+    text-align: center;
+}
