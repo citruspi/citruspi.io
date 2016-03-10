@@ -1,0 +1,40 @@
+{
+    "title": "Spotify Notifications",
+    "subtitle": "Bridging Spotify and OS X Notification Center",
+    "slug": "spotify-notifications",
+    "attachments": [
+        {
+            "type": "video",
+            "long": "width",
+            "sources": [
+                {
+                    "name": "demo.mp4",
+                    "type": "video/mp4"
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "name": "website.png",
+            "long": "width"
+        },
+        {
+            "type": "image",
+            "name": "the-next-web.png",
+            "long": "width",
+            "link": "http://thenextweb.com/apps/2013/04/07/this-simple-app-brings-spotify-to-your-macs-notification-center/"
+        }
+    ],
+    "links": [
+        {
+            "icon": "link",
+            "title": "Home Page",
+            "link": "https://spotify-notifications.citruspi.io"
+        },
+        {
+            "icon": "github",
+            "title": "GitHub",
+            "link": "https://github.com/citruspi/Spotify-Notifications"
+        }
+    ]
+}
