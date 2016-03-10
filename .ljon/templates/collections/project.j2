@@ -1,0 +1,43 @@
+{% extends "page.j2" %}
+{% block externalstylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="/static/vendor/font-awesome/4.5.0/css/font-awesome.min.css">
+{% endblock %}
+{% block content %}
+<div class="row content project">
+    <div class="eight columns project attachments">
+        {% block attachments %}
+        {% for attachment in attachments %}
+        {% if attachment['type'] == 'image' %}
+        {% if attachment['link'] %}
+        <a href="{{ attachment['link'] }}">
+        {% else %}
+        <a href="/static/media/collections/projects/{{ slug }}/{{ attachment['name'] }}">
+        {% endif %}
+            <img class="attachment" alt="..." src="/static/media/collections/projects/{{ slug }}/{{ attachment['name'] }}" {{ attachment['long'] }}="100%"/>
+        </a>
+        {% elif attachment['type'] == 'video' %}
+            <video width="100%" autoplay="" loop="" class="attachment">
+                {% for source in attachment['sources'] %}
+                <source src="/static/media/collections/projects/{{ slug }}/{{ source['name'] }}" type="{{ source['type'] }}">
+                {% endfor %}
+            </video>
+        {% endif %}
+        {% endfor %}
+        {% endblock %}
+    </div>
+    <div class="four columns project overview">
+        <p id="title">{{ title }}</p>
+        <p id="subtitle">{{ subtitle }}</p>
+        <hr>
+        {% block description %}
+        {% endblock %}
+        <hr>
+        {% block footer %}
+        {% for link in links %}
+        <p class="project link"><i class="fa fa-{{ link['icon'] }}"></i> &nbsp;<a href="{{ link['link'] }}">{{ link['title'] }}</a></p>
+        {% endfor %}
+        {% endblock %}
+   </div>
+</div>
+{% endblock %}

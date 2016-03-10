@@ -538,4 +538,51 @@ div#map.about.map {
     content: "\00a0\00a0\00a0";
 }
 
+.row.project {
+    display: flex;
+    padding-bottom: 20px;
+}
 
+.project.overview {
+    border-left: 1px solid #E1E1E1;
+    padding-left: 2em;
+}
+
+.project.overview #title {
+    font-size: 15px;
+    text-align: left;
+}
+
+.project.overview #subtitle {
+    font-size: 13px;
+    text-align: left;
+    font-style: italic;
+    margin-top: -25px;
+}
+
+@media(min-width: 1024px) {
+    .project.overview #title {
+        font-size: 25px;
+    }
+
+    .project.overview #subtitle {
+        font-size:20px;
+        margin-top: -15px;
+    }
+
+    .project.overview p {
+        font-size: 16px;
+    }
+}
+
+.attachment {
+    margin-bottom: 30px;
+}
+
+img.attachment {
+    box-shadow: 3px 3px 3px #888888;
+}
+
+p.project.link {
+    margin-bottom: 0.75rem;
+}
