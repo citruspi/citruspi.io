@@ -8,6 +8,10 @@
         {
             "title": "RHoK The Hood",
             "path": "rhok-the-hood"
+        },
+        {
+            "title": "ReactIRC",
+            "path": "reactirc"
         }
     ]
 }

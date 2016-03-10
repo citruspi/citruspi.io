@@ -1,0 +1,17 @@
+{
+    "title": "ReactIRC",
+    "slug": "reactirc",
+    "links": [
+        {
+            "icon": "link",
+            "title": "Home Page",
+            "link": "https://reactirc.citruspi.io"
+        },
+        {
+            "icon": "github",
+            "title": "GitHub",
+            "link": "https://github.com/citruspi/ReactIRC"
+        }
+    ]
+
+}

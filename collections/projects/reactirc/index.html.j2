@@ -1,0 +1,43 @@
+{% extends 'collections/project.j2' %}
+{% block attachments %}
+{% highlight 'python', lineno='inline' %}
+# karmabot.py
+
+from ReactIRC import Bot
+
+bot = Bot()
+scores = {}
+
+
+@bot.on(r'^karma$')
+@bot.on(r'^karma ([\S]+)$')
+def karma_status(user=None):
+    if user is None:
+        user = bot.context['sender']
+
+    try:
+        return '{} has {} karma'.format(user,
+                                        scores[user])
+    except KeyError:
+        return '{} has 0 karma'.format(user)
+
+
+@bot.on(r'^([\S]+)(\+\+|\-\-){1}$')
+def karma_adjustment(user, direction):
+    if user not in scores:
+        scores[user] = 0
+
+    if direction == '--':
+        scores[user] -= 1
+    elif direction == '++':
+        scores[user] += 1
+
+bot.monitor(nick='bot', channels='#bots')
+{% endhighlight %}
+{% endblock %}
+
+{% block description %}
+<p>ReactIRC is a flask-inspired library for developing IRC bots. It comes with
+an embedded web server for receiving POST requests from webhook enabled
+services.</p>
+{% endblock %}
