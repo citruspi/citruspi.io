@@ -1,3 +1,9 @@
 {
-    "title": "photography"
+    "title": "Photography",
+    "streams": [
+        {
+            "path": "places",
+            "title": "Places"
+        }
+    ]
 }
