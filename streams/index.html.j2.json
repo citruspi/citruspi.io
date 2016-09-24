@@ -4,10 +4,6 @@
         {
             "path": "blog",
             "title": "blog"
-        },
-        {
-            "path": "365",
-            "title": "#365"
         }
     ]
 }
