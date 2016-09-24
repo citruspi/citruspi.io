@@ -1,6 +1,4 @@
 ---
-metadata:
-  title: "citruspi"
 ignore:
 - ".*\\..+\\.j2.json"
 - ".*\\..+\\.j2.yaml"
