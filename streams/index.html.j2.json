@@ -2,8 +2,8 @@
     "title": "Streams",
     "streams": [
         {
-            "path": "blog",
-            "title": "blog"
+            "path": "tech",
+            "title": "tech"
         }
     ]
 }
