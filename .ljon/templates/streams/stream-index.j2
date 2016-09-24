@@ -10,7 +10,13 @@
         <table class="stream-index" id="technical-stream">
             {%- for post in posts %}
             <tr class="stream-index-entry" id="technical-stream">
-                <td class="stream-index-entry-title"><a href="/{{ post['date'].split(' ')[-1] }}/{{post['path']}}">{{post['title']}}</a></td>
+                {% if post['path'] %}
+                <td class="stream-index-entry-title"><a href="{{post['path']}}">{{post['title']}}</a></td>
+                {% elif post['slug'] %}
+                <td class="stream-index-entry-title"><a href="/{{ post['date'].split(' ')[-1] }}/{{post['slug']}}">{{post['title']}}</a></td>
+                {% else %}
+                <td class="stream-index-entry-title"><a href="/{{ post['date'].split(' ')[-1] }}/{{ post['title']|replace(' ', '-')|lower }}">{{post['title']}}</a></td>
+                {% endif %}
                 <td class="stream-index-entry-date">{{post['date']}}</td>
             </tr>
             {%- endfor %}
