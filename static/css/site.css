@@ -89,3 +89,53 @@ a.inverse-link:hover {
         font-size: 1.2rem;
     }
 }
+
+.block-index-entry {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.block-index-entry h1 {
+    font-size: 3.5rem;
+    color: #ecf0f1;
+    text-transform: uppercase;
+    z-index: 2;
+    position: relative;
+    padding: 20% 0;
+    letter-spacing: 0.5rem;
+}
+
+.block-index-entry h1:hover {
+    color: #f39c12;
+}
+
+.block-index-entry .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.block-index-entry .filter {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+@media (min-width: 640px) {
+    .block-index-entry h1 {
+        font-size: 4rem;
+    }
+}

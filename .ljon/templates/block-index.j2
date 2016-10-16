@@ -1,0 +1,19 @@
+{% extends "page.j2" %}
+
+{% block content %}
+{%- for entry in entries %}
+<div class="row small-up-1 medium-up-2 block-index">
+    <div class="column">
+        <a href="{{path_prefix}}{{entry['path']}}/">
+            <div class="block-index-entry">
+                <h1>{{entry['title']}}</h1>
+                <div class="filter">&nbsp;</div>
+                <div class="background"
+                     style="background-image: url('{{background_image_prefix}}{{entry['image']}}');">
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{%- endfor %}
+{% endblock %}
