@@ -1,3 +1,53 @@
 body {
     font-family: "proxima-nova", sans-serif;
+    font-size: 18px;
+}
+
+@media (min-width: 640px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        font-size: 22px;
+    }
+}
+
+.header {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.header a {
+    color: #121212;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+
+.header a:hover {
+    color: #f39c12;
+}
+
+@media (min-width: 640px) {
+    .header {
+        margin: 2rem 0 1rem;
+    }
+
+    .header a {
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header {
+        margin: 3rem 0 1.5rem;
+    }
+
+    .header a {
+        font-size: 6rem;
+    }
 }
