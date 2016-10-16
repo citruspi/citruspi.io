@@ -310,3 +310,19 @@ code {
         margin-left: calc(-1 * ((70vw - 100%) / 2));
     }
 }
+
+.about.map {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+
+.about.map img {
+    width: 100%;
+}
+
+.about.map p.credit {
+    font-size: 1rem;
+    text-align: right;
+    padding: 0.5rem;
+    width: 100%;
+}
