@@ -38,15 +38,10 @@ a.inverse-link:hover {
 }
 
 .header a {
-    color: #121212;
     font-size: 3rem;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 10px;
-}
-
-.header a:hover {
-    color: #f39c12;
 }
 
 @media (min-width: 640px) {
