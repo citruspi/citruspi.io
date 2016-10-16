@@ -1,6 +1,7 @@
 body {
     font-family: "proxima-nova", sans-serif;
     font-size: 18px;
+    color: #121212;
 }
 
 @media (min-width: 640px) {
@@ -13,6 +14,22 @@ body {
     body {
         font-size: 22px;
     }
+}
+
+a {
+    color: #f39c12;
+}
+
+a:hover {
+    color: #121212;
+}
+
+a.inverse-link {
+    color: #121212;
+}
+
+a.inverse-link:hover {
+    color: #f39c12;
 }
 
 .header {
