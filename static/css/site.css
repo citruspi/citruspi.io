@@ -218,3 +218,28 @@ blockquote p.source:before {
         width: 50%;
     }
 }
+
+code {
+    font-size: initial;
+}
+
+/*
+ * syntax highlighting
+ */
+
+.highlight {
+    border-radius: 4px;
+    margin-bottom: 2.5rem;
+}
+
+.highlight pre {
+    margin: 0rem;
+    padding: 1rem 1.5rem;
+    font-size: 14px;
+}
+
+.highlight span {
+    font-family: "source-code-pro", "anonymous-pro", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
