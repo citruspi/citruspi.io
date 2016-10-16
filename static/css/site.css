@@ -46,6 +46,11 @@ a.inverse-link:hover {
     letter-spacing: 10px;
 }
 
+li {
+    list-style-position: inside;
+    text-indent: -1em;
+}
+
 @media (min-width: 640px) {
     .header {
         margin: 2rem 0 1rem;
