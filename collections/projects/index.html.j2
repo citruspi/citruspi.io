@@ -1,31 +1,8 @@
-{% extends "page.j2" %}
-{% block content %}
-<div class="row">
-    <div class="twelve columns stream-index-header" id="technical-stream">
-        <h2>projects</h2>
-    </div>
-</div>
+{% extends "list-index.j2" %}
 
-<div class="row">
-    <div class="twelve column">
-        <div class="collections projects intro">
-            <blockquote>
-                <p>For more projects, check out my <a
-                    href="https://github.com/citruspi/">GitHub profile</a>.</p>
-            </blockquote>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="twelve columns">
-        <table class="stream-index" id="technical-stream">
-            {% for project in projects %}
-            <tr class="stream-index-entry" id="technical-stream">
-                <td class="stream-index-entry-title"><a href="{{project['path']}}">{{project['title']}}</a></td>
-            </tr>
-            {%- endfor %}
-        </table>
-    </div>
-</div>
+{% block list_index_body %}
+{% for entry in entries %}
+{% do entry.update(path = '/collections/projects/' + entry.path) %}
+{% endfor %}
+{{ super() }}
 {% endblock %}

@@ -161,3 +161,31 @@ a.inverse-link:hover {
         font-size: 2.5rem;
     }
 }
+
+.tech-stream-list-index-entry-date {
+    text-align: right;
+}
+
+@media (min-width: 640px) {
+    .tech-stream-list-index-body {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tech-stream-list-index-body {
+        width: 60%;
+    }
+}
+
+@media (min-width: 640px) {
+    .projects-collection-list-index-body {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .projects-collection-list-index-body {
+        width: 50%;
+    }
+}

@@ -1,0 +1,10 @@
+---
+title: projects
+class: projects-collection
+entries:
+- title: Spotify Notifications
+  path: spotify-notifications
+- title: RHoK The Hood
+  path: rhok-the-hood
+- title: ReactIRC
+  path: reactirc

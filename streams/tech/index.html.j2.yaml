@@ -1,6 +1,7 @@
 ---
 title: tech
-posts:
+class: tech-stream
+entries:
 - title: A Docset for PowerShell
   date: 18 March 2015
 - title: Jekyll Deployments with Fabric

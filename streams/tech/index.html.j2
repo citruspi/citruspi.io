@@ -1,1 +1,17 @@
-{% extends "streams/stream-index.j2" %}
+{% extends "list-index.j2" %}
+
+{% block list_index_body %}
+{% set formatted_entries = [] %}
+{% for entry in entries %}
+{% if not entry['path'] %}
+{% set year = entry['date'].split(' ')[-1] %}
+{% if entry['slug'] %}
+{% set slug = entry['slug'] %}
+{% else %}
+{% set slug = entry['title']|replace(' ', '-')|lower %}
+{% endif %}
+{% do entry.update(path = '/' + year + '/' + slug) %}
+{% endif %}
+{% endfor %}
+{{ super() }}
+{% endblock %}
