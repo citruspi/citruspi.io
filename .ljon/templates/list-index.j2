@@ -1,0 +1,31 @@
+{% extends "page.j2" %}
+{% block content %}
+{% block list_index_header %}
+<div class="row list-index-header">
+    <div class="columns">
+        <h1>{{ title }}</h1>
+    </div>
+</div>
+{% endblock %}
+
+{% block list_index_body %}
+<div class="row {% if class %}{{ class }}-{% endif %}list-index-body">
+    <div class="columns">
+        <table>
+            {%- for entry in entries %}
+            <tr class="list-index-entry">
+                <td class="list-index-entry-title"><a href="{{entry['path']}}">{{entry['title']}}</a></td>
+                {% if entry.keys()|length > 2 %}
+                {% for key in entry %}
+                {% if key != 'path' and key != 'title' %}
+                <td class="{% if class %}{{ class }}-{% endif %}list-index-entry-{{key}}">{{entry[key]}}</td>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </tr>
+            {%- endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}
