@@ -63,3 +63,29 @@ a.inverse-link:hover {
         font-size: 6rem;
     }
 }
+
+.menu {
+    margin: -1rem auto 0.5rem;
+}
+
+.menu a {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+    .menu {
+        margin: 0 auto 1.5rem;
+        text-align: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .menu {
+        margin: 1rem auto 2rem;
+    }
+
+    .menu a {
+        font-size: 1.2rem;
+    }
+}
