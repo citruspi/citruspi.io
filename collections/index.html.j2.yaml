@@ -1,0 +1,8 @@
+---
+title: collections
+background_image_prefix: /static/images/collection-
+path_prefix: /collections/
+entries:
+- path: projects
+  title: projects
+  image: projects.jpg

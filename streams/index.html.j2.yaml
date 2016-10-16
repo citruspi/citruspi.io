@@ -1,6 +1,9 @@
 ---
 title: streams
-streams:
+background_image_prefix: /static/images/stream-
+path_prefix: /streams/
+entries:
 - path: tech
   title: tech
+  image: tech.jpg
 
