@@ -1,9 +1,13 @@
 {% extends "page.j2" %}
 {% block content %}
-<div class="row">
-    <div class="twelve columns content post">
-        <p id="title">{{ title }}</p>
-        <p id="subtitle">{{ subtitle }}</p>
+<div class="row align-center post header">
+    <div class="columns">
+        <h1 id="title">{{ title }}</h1>
+        <h2 id="subtitle">{{ subtitle }}</h2>
+    </div>
+</div>
+<div class="row align-center post body">
+    <div class="columns">
         {% block post %}
         {% endblock %}
         <hr>
