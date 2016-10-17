@@ -97,6 +97,10 @@ blockquote p.source:before {
     margin: -1rem auto 0.5rem;
 }
 
+.menu div.columns:nth-child(even) {
+    text-align: right;
+}
+
 .menu a {
     font-size: 1rem;
     text-transform: uppercase;
@@ -106,6 +110,9 @@ blockquote p.source:before {
     .menu {
         margin: 0 auto 1.5rem;
         text-align: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center
     }
 }
 
