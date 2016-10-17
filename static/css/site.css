@@ -94,7 +94,7 @@ blockquote p.source:before {
 }
 
 .menu {
-    margin: -1rem auto 0.5rem;
+    margin: -1rem auto 1rem;
 }
 
 .menu div.columns:nth-child(even) {
