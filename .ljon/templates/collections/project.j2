@@ -4,8 +4,14 @@
 <link rel="stylesheet" href="/static/vendor/font-awesome/4.5.0/css/font-awesome.min.css">
 {% endblock %}
 {% block content %}
-<div class="row content project">
-    <div class="eight columns project attachments">
+<div class="row align-center post header">
+    <div class="columns">
+        <h1 class="title">{{ title }}</h1>
+        {% if subtitle %}<h2 class="subtitle">{{ subtitle }}</h2>{% endif %}
+    </div>
+</div>
+<div class="row project">
+    <div class="small-12 medium-6 large-8 columns project attachments">
         {% block attachments %}
         {% for attachment in attachments %}
         {% if attachment['type'] == 'image' %}
@@ -14,10 +20,10 @@
         {% else %}
         <a href="/static/media/collections/projects/{{ slug }}/{{ attachment['name'] }}">
         {% endif %}
-            <img class="attachment" alt="..." src="/static/media/collections/projects/{{ slug }}/{{ attachment['name'] }}" {{ attachment['long'] }}="100%"/>
+            <img class="project attachment" alt="..." src="/static/media/collections/projects/{{ slug }}/{{ attachment['name'] }}" {{ attachment['long'] }}="100%"/>
         </a>
         {% if attachment['caption'] %}
-        <p class="attachment caption">{{ attachment['caption'] }}</p>
+        <p class="project attachment caption">{{ attachment['caption'] }}</p>
         {% endif %}
         {% elif attachment['type'] == 'video' %}
             <video width="100%" autoplay="" loop="" class="attachment">
@@ -29,10 +35,7 @@
         {% endfor %}
         {% endblock %}
     </div>
-    <div class="four columns project overview">
-        <p id="title">{{ title }}</p>
-        <p id="subtitle">{{ subtitle }}</p>
-        <hr>
+    <div class="small-12 medium-6 large-4 columns project overview">
         {% block description %}
         {% endblock %}
         <hr>
