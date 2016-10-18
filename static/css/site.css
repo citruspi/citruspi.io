@@ -107,6 +107,10 @@ blockquote p.source:before {
 }
 
 @media (min-width: 640px) {
+    .menu div.columns:nth-child(even) {
+        text-align: center;
+    }
+
     .menu {
         margin: 0 auto 1.5rem;
         text-align: center;
