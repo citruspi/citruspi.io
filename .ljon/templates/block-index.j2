@@ -1,6 +1,7 @@
 {% extends "page.j2" %}
 
 {% block content %}
+{% block block_index %}
 {%- for entry in entries %}
 <div class="row small-up-1 medium-up-2 block-index">
     <div class="column">
@@ -16,4 +17,5 @@
     </div>
 </div>
 {%- endfor %}
+{% endblock %}
 {% endblock %}
