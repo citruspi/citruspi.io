@@ -2,7 +2,7 @@
 
 {% block list_index_body %}
 {% for entry in entries %}
-{% do entry.update(path = '/collections/projects/' + entry.path) %}
+{% do entry.update(path = '/projects/' + entry.path) %}
 {% endfor %}
 {{ super() }}
 {% endblock %}
