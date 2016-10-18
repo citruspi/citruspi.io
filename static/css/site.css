@@ -397,3 +397,7 @@ p.project.attachment.caption {
     font-style: italic;
     text-align: center;
 }
+
+.home.post.body {
+    margin-top: 8%;
+}
