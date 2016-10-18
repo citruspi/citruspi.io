@@ -1,7 +1,7 @@
 ---
-title: collections
+title: more stuff
 background_image_prefix: /static/images/collection-
-path_prefix: /collections/
+path_prefix: /
 entries:
 - path: projects
   title: projects
